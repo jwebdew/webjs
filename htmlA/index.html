@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, in itial-scale=1.0"> -->
+    <title>복습예제</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link href="css/18.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+    
+    <script>
+
+
+        window.onload = function () {
+
+
+            //my familie 버튼 클릭
+            let search = document.getElementById('search');
+            let searchBox = document.getElementsByClassName('box')[0];
+            let searchBoxStyle = searchBox.style.display = 'none';
+
+            search.onclick = function () {
+                if (searchBox.style.display == 'none') {
+                    searchBox.style.display = 'block';
+
+
+                } else {
+                    searchBox.style.display = 'none';
+                }
+            }//search click();
+
+
+            let menuBtn = document.getElementsByClassName('all_menu')[0];
+            let menuBox = menuBtn.getElementsByTagName('ul')[0];
+            let allMenuIcon = menuBtn.getElementsByTagName('i')[0];
+            let menuBoxStyle = menuBox.style.opacity = 0;
+
+            menuBtn.onclick = function () {
+                if (menuBox.style.opacity == '0') {
+                    menuBox.style.opacity = '1';
+                    menuBox.style.transition = '0.8s';
+                    menuBox.style.right = '0';
+                    allMenuIcon.style.color = '#DB5200';
+
+
+                } else {
+                    menuBox.style.opacity = '0';
+                    menuBox.style.right = '50px';
+                    allMenuIcon.style.color = '#333';
+                    menuBox.style.transition = '0.8s';
+                }
+            }//menuBtn click();
+
+            //마우스올렷을 때 큰이미지 변경
+
+            // : 문서가 준비된 상황 이후에 발동하도록 선언하겠다 메소드()
+
+            let big = document.getElementsByClassName('big_img')[0];
+
+
+            //div객체 아래에 있는 태그값 등을 가지고 올 수 있다.
+            let bigImg = big.getElementsByTagName('img')[0];
+            //태그는 컬렉션(배열) 처럼 가지고 온다.
+
+            //위에 div객체 생성
+            let smallImgs = document.getElementsByClassName('thumb')[0];
+            //배열리턴
+            let smallImgThumb = smallImgs.getElementsByTagName('img');
+
+
+
+            //for (초기값; 종료여부; 증감값)
+            for (i = 0; i < smallImgThumb.length; i++) {
+                smallImgThumb[i].onmouseenter = function () {
+                    bigImg.src = this.src;
+                    console.log(smallImgThumb.length); //3
+                }
+            }
+
+
+
+
+            //팝업창 띄우기
+            let noticeBtn = document.getElementById('notice');
+
+            let popupWindow = document.getElementsByClassName('notice')[0];
+            let popupBtn = document.getElementById('btn');
+            // let closeBtn = document.getElementsByTagName('button')[0];
+            let noticeStyle = popupWindow.style.display = 'none';
+
+            let bodyBg = document.getElementsByTagName('body')[0];
+
+            noticeBtn.onclick = function () {
+                if (popupWindow.style.display == 'none') {
+                    popupWindow.style.display = 'block';
+                    noticeBtn.style.backgroundColor = 'red';
+                    noticeBtn.style.color = '#fff';
+
+                }
+            }//noticeBtn.onclick
+            popupBtn.onclick = function () {
+                if (popupWindow.style.display == 'block') {
+                    popupWindow.style.display = 'none';
+                    noticeBtn.style.backgroundColor = '#fff';
+                    noticeBtn.style.color = '#333';
+                }
+            }//noticeBtn.onclick
+
+            //다크모드 / 기본모드 설정
+            let modeBtn = document.getElementById('mode');
+            let bg = document.getElementsByTagName('body')[0];
+            let bodyText = document.getElementsByTagName('p')[0];
+            // let typeBtn = document.getElementsByTagName('input')[0];
+
+            let mode = modeBtn.innerText = '다크모드';
+
+            modeBtn.onclick = function () {
+                if (modeBtn.innerText == '다크모드') {
+                    bg.style.backgroundColor = '#000';
+                    bg.style.color = '#fff';
+                    bodyText.style.color = '#fff';
+                    modeBtn.innerText = '기본모드';
+                    modeBtn.style.backgroundColor = '#fff';
+                    modeBtn.style.color = '#333';
+                    // dayBtn.innerText = '기본모드';
+                    noticeBtn.style.backgroundColor = 'red'
+
+                } else {
+                    bg.style.backgroundColor = '#fff';
+                    bg.style.color = '#333';
+                    bodyText.style.color = '#333';
+                    modeBtn.innerText = '다크모드';
+                    modeBtn.style.backgroundColor = '#000';
+                    modeBtn.style.color = '#fff';
+                    // dayBtn.innerText = '기본모드';
+                    noticeBtn.style.backgroundColor = '#fff'
+                }
+            }
+        }//window.onload    
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header">
+            <h1><a href="#"><img src="images/logo/youtube.png" alt="" /></a></h1>
+            <nav class="pc">
+                <ul>
+                    <li><a href="#">타이어</a></li>
+                    <li><a href="#">매장정보</a></li>
+                    <li><a href="#">프로모션</a></li>
+                    <li><a href="#">고객지원</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </nav>
+            <div class="search" id="search">
+                <i class="xi-search"><span>검색하기</span></i>
+            </div><!-- .search end -->
+            <div class="all_menu">
+                <i class="xi-apps"><span>전체메뉴보기</span></i>
+                <ul class="all_menu_box">
+                    <li><a href="#">타이어</a></li>
+                    <li><a href="#">매장정보</a></li>
+                    <li><a href="#">프로모션</a></li>
+                    <li><a href="#">고객지원</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul><!-- #menu -->
+            </div><!-- .all_menu end -->
+        </div>
+        <div class="box">
+            <div>
+                <input type="text" name="">
+                <input type="button" value="검색하기" />
+            </div>
+        </div>
+    </header>
+    <section class="main_visual">
+        <video autoplay muted loop>
+            <source src="images/745267478.mp4">
+        </video>
+    </section><!-- .main_visual -->
+    <section class="cont01">
+        <figure class="big_img">
+            <img src="images/yellow1.jpg" alt="" />
+        </figure>
+
+        <div class="inner">
+            <div class="title">
+                <h3>간단요리사 브랜드소개</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div><!-- .title end -->
+
+            <div class="thumb">
+                <div>
+                    <figure class="thumb_list">
+                        <img src="images/yellow1.jpg" alt="" />
+                    </figure>
+                    <strong>고민없이</strong>
+                    <p>어떤 재료로 우려야 할지 고민하지 않아도 돼요!</p>
+                </div>
+                <div>
+                    <figure class="thumb_list">
+                        <img src="images/yellow2.jpg" alt="" />
+                    </figure>
+                    <strong>고민없이</strong>
+                    <p>어떤 재료로 우려야 할지 고민하지 않아도 돼요!</p>
+                </div>
+                <div>
+                    <figure class="thumb_list">
+                        <img src="images/yellow3.jpg" alt="" />
+                    </figure>
+                    <strong>고민없이</strong>
+                    <p>어떤 재료로 우려야 할지 고민하지 않아도 돼요!</p>
+                </div>
+            </div><!-- thumb -->
+        </div><!-- .inner end -->
+    </section><!-- .cont01 end -->
+
+    <ul class="fixed_btn">
+        <li id="mode">다크모드</li>
+        <li id="notice">안내</li>
+    </ul><!-- .fixed_btn -->
+    <div class="notice">
+        <figure>
+            <img src="images/웨딩.jpg" alt="" />
+        </figure>
+        <button id="btn" type="button">닫기</button>
+    </div><!-- .notice end -->
+
+
+</body>
+
+</html>

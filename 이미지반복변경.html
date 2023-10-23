@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #333;
+            line-height: 1;
+        }
+
+        section {
+            width: 500px;
+
+            margin: 0 auto;
+
+
+        }
+
+        section img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+
+        }
+
+        section button {
+            width: 100%;
+            height: 50px;
+            border: 0;
+            background-color: tomato;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            let img = $('img');
+            let btn = $('button');
+
+            //버튼을 클릭하면 onclick
+            //img 변경
+            //버튼배경컬러 변경
+            //.style.backgroundColor = '';
+            btn.onclick(function () {
+                if (btn.style.backgroundColor == 'tomato') {
+                    img.src = 'img/food1.jpg';
+                    btn.style.backgroundColor = '#D800A6';
+                } else {
+                    img.src = 'img/nature1.jpg';
+                    btn.style.backgroundColor = 'tomato';
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <section>
+        <figure>
+            <img id="img" src="img/nature1.jpg" alt="피크닉이미지" />
+        </figure>
+        <button>이미지변경하기</button>
+    </section>
+
+</body>
+
+</html>

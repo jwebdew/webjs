@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 이벤트 메소드</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: chartreuse;
+        }
+
+        figure img {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>제이쿼리</p>
+    <div class="box"></div>
+
+    <button class="up">이미지감추기</button>
+    <button class="down">이미지보이기</button>
+    <button class="toggle">이미지보였다가 감췄다가 반복</button>
+
+    <figure>
+        <img src="img/food2.jpg" alt="" />
+    </figure>
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            //스크립트 코드 작성
+            $('p').css({
+                'font-size': '30px',
+                'background-color': '#ffcc00'
+            });
+
+            $('.box').click(function () {
+                $(this).text('hello jquery');
+            });
+
+
+            $('.up').click(function () {
+                $('figure').slideUp();
+            });
+
+
+            //슬라이드 효과 메소드
+            //slideUp(), slideDown(), 
+            //slideToggle()
+
+            //2. 클래스명 down을 클릭했을 때 실행
+            //figure가 슬라이드 다운이 됨
+            $('.down').click(function () {
+                $('figure').slideDown();
+            });
+
+            //3. 클래스명 toggle을 클릭했을 때 실행
+            //figure가 슬라이드 업/다운이 반복적으로 움직임
+            $('.toggle').click(function () {
+                $('figure').slideToggle();
+            });
+
+        });//jquery end
+    </script>
+</body>
+
+</html>

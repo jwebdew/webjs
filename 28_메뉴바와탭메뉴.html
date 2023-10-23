@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴바와탭메뉴</title>
+    <link href="css/메뉴바와탭메뉴.css" rel="stylesheet" />
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('.tab_menu ul li').click(function () {
+                let moveLeft = $(this).position().left;
+                $('.bar').css({
+                    'left': moveLeft,
+                    'transition': '0.5s'
+                });
+
+                /* 메뉴를 클릭했을 때 item한테 클래스명 on이
+                삭제 / 추가 */
+
+                /* 모든 .item한테 클래스명 on을 제거 */
+                /* item한테 li를 클릭한 선택자의 순서를 찾아서 
+                클래스명 on을 추가
+                */
+                $('.item').removeClass('on');
+                $('.item').eq($(this).index()).addClass('on');
+
+            });
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <section class="cont01">
+        <div class="title">
+            <h3>웹디자인/웹퍼블리싱</h3>
+            <p>웹접근성, 웹호환성을 고려한 웹사이트 제작</p>
+        </div><!-- .title end -->
+        <div class="tab_menu">
+            <ul>
+                <li>어떠한</li>
+                <li>사이트</li>
+                <li>이름</li>
+            </ul>
+            <div class="bar">
+                <span>메뉴막대바</span>
+            </div>
+        </div><!-- .tab_menu end -->
+        <div class="list">
+            <div class="item on">
+                <img src="img/visual2.jpg" alt="" />
+                <div class="info">
+                    <h4>웹사이트 이름 리뉴얼</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur labore vitae non autem
+                        nihil inventore voluptatem, accusantium, officia cum et error ut modi in obcaecati neque ea
+                        odit, nulla quidem.</p>
+                    <ul class="btn">
+                        <li><a href="#">작업과정</a></li>
+                        <li><a href="#">사이트보기</a></li>
+                    </ul><!-- .btn -->
+                </div><!-- .info end -->
+
+            </div><!-- .item 1   -->
+
+            <div class="item">
+                <img src="img/visual1.jpg" alt="" />
+                <div class="info">
+                    <h4>웹사이트 이름 리뉴얼</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur labore vitae non autem
+                        nihil inventore voluptatem, accusantium, officia cum et error ut modi in obcaecati neque ea
+                        odit, nulla quidem.</p>
+                    <ul class="btn">
+                        <li><a href="#">작업과정</a></li>
+                        <li><a href="#">사이트보기</a></li>
+                    </ul><!-- .btn -->
+                </div><!-- .info end -->
+
+            </div><!-- .item 2   -->
+
+            <div class="item">
+                <img src="img/wedding.jpg" alt="" />
+                <div class="info">
+                    <h4>웹사이트 이름 리뉴얼</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur labore vitae non autem
+                        nihil inventore voluptatem, accusantium, officia cum et error ut modi in obcaecati neque ea
+                        odit, nulla quidem.</p>
+                    <ul class="btn">
+                        <li><a href="#">작업과정</a></li>
+                        <li><a href="#">사이트보기</a></li>
+                    </ul><!-- .btn -->
+                </div><!-- .info end -->
+
+            </div><!-- .item 3   -->
+        </div><!-- .list end -->
+    </section><!-- .cont01 end -->
+</body>
+
+</html>

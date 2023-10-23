@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간 분 초</title>
+</head>
+<body>
+    <h3>지금은<span id="time"></span></h3>
+    <script>
+        //지역변수 vs 전역변수
+        
+        //지역변수 : 특정한 공간에서만 사용된 변수
+        //전역변수 : 모든 영역에서 사용가능한 변수
+
+        function clock() {
+          //지역변수
+            let time = document.getElementById('time');
+
+            let day = new Date(); //date객체 사용
+
+            let hours = day.getHours(); //시간
+            let minutes = day.getMinutes(); //분
+            let seconds = day.getSeconds(); //초
+
+            time.innerHTML = hours + ':' + minutes + ':' + seconds;
+
+            
+        }//clock()
+
+        clock();
+        //함수 clock을 실행시켜주기;
+
+        setInterval(clock, 1000);
+        //함수 clock을 1초에 한번씩 실행
+        //setInterval(); => 시간을 설정하여 실행
+    </script>
+</body>
+</html>

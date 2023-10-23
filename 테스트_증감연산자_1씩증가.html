@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>증감연산자</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        #num { 
+            width: 100px;
+            height: 100px;
+            background-color: #ffcc00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="num">0</div>
+    <script>
+         
+        let num = document.getElementById('num');
+        let i = 0;
+        num.onmouseover = function(){
+            num.innerText = i++;
+            
+        }
+
+    </script>
+</body>
+
+</html>

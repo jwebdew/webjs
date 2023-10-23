@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디데이</title>
+</head>
+
+<body>
+    <input type="button" value="다크모드" id="btn" />
+    <h4>이벤트할인<span id="time"></span></h4>
+
+
+    <script>
+        function eventDay() {
+            let time = document.getElementById('time');
+
+            let today = new Date();
+            let event = new Date('2022-12-25 00:00:00');
+            let eToDay = event - today;
+
+            console.log(eToDay);
+
+            // '밀리세컨드단위 1밀리초(ms)' = 0.001초(s)
+            // 우리가 알고 있는 밀리세컨드단위를 이용해서
+            // 날짜, 시간, 분, 초를 가지고 와야함.
+            // 0.001초를 1초로 만들기 위해 1 * 1000 => 1초
+            // 밀리세컨드 초를 이용해서 60초, 60분, 24시간으로 나눔
+            // 60 * 1000 => 60초(1분) * 60 => 60분(1시간) * 24 = 24시간(하루)
+
+
+            //////////////////////
+            ///////////시간 구하는 공식
+            // 1초 = 1000
+            // 1분(60초) = 1000 * 60
+            // 1시간(60분) = 1000 * 60 * 60
+            // 1일(60분*24) = 1000 * 60 * 60 * 24
+
+
+            let eDay = Math.floor(eToDay / (1000 * 60 * 60 * 24)) + 1;
+            // console.log(eDay);
+
+            let eHour = String(Math.floor((eToDay % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, 0);
+
+            // console.log(eHour);
+
+            let eMin = Math.floor((eToDay % (1000 * 60 * 60)) / (1000 * 60));
+            // console.log(eMin);
+
+            let eSec = Math.floor((eToDay % (1000 * 60)) / 1000);
+            console.log(eMin);
+
+            time.innerHTML = eDay + '일' + eHour + ':' + eMin + ':' + eSec;
+        }//eventDay()
+
+        eventDay();
+        setInterval(eventDay, 1000);
+
+
+        let btn = document.getElementById('btn');
+        let eventText = document.getElementsByTagName('h4')[0];
+        let bodyBg = document.getElementsByTagName('body')[0];
+
+        let btnMode = btn.value = '다크모드';
+        btn.onclick = function () {
+            if (btn.value == '다크모드') {
+                btn.value = '기본모드';
+                bodyBg.style.backgroundColor = '#000';
+                eventText.style.color = '#fff';
+            } else {
+                btn.value = '다크모드';
+                bodyBg.style.backgroundColor = '#fff';
+                eventText.style.color = '#333';
+            }
+        }//btn.onclick
+
+    </script>
+</body>
+
+</html>

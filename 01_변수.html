@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수</title>
+</head>
+<body>
+    <script>
+        //p.331
+        //변수 : 데이터를 담는 공간
+        //var, let, const
+
+        var a = 100;
+        var b = '자바스크립트';
+        var tabMenu = '<i>메뉴</i>';
+
+        document.write(a, '<br>');
+        document.write(b, '<br>');
+        document.write(tabMenu, '<br>');
+
+        var s = '100';
+        var t = '50';
+        var t = '2000' //중복선언
+        s = '30';//재할당
+        var result = s + t;
+        document.write(result);
+
+        let c = 50;
+        // let c = 변수명 중복사용 불가능
+        c = 70; //재할당 가능
+
+        const d = 100;
+        //const d  변수명 중복사용 불가능
+        //d = 50; // 재할당 불가능
+        //document.write(d); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스와이퍼 슬라이드</title>
+    <!-- swiper demo -->
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="css/슬라이드_스와이퍼.css" />
+
+    <!-- 1. 제이쿼리 라이브러리 -->
+    <!-- 2. 스와이퍼 라이브러리 -->
+    <!-- 3. 제이쿼리 선언$(function(){}) -->
+    <!-- 4. function안으로 스와이퍼 코드 넣기 -->
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        $(function () {
+            var swiper = new Swiper(".mySwiper", {
+                spaceBetween: 30,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        });//jquery end
+    </script>
+
+</head>
+
+<body>
+    <section class="main_visual">
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/food1.jpg" alt="" />
+                    <div class="text">
+                        <div>
+                            <h2>MAIN VISUAL</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <a href="#">button</a>
+                        </div>
+                    </div><!-- .text end -->
+                </div><!-- 1 -->
+                <div class="swiper-slide">
+                    <img src="img/food2.jpg" alt="" />
+                    <div class="text">
+                        <div>
+                            <h2>MAIN VISUAL</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <a href="#">button</a>
+                        </div>
+                    </div><!-- .text end -->
+                </div><!-- 2 -->
+                <div class="swiper-slide">
+                    <img src="img/food3.jpg" alt="" />
+                    <div class="text">
+                        <div>
+                            <h2>MAIN VISUAL</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <a href="#">button</a>
+                        </div>
+                    </div><!-- .text end -->
+                </div><!-- 3 -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section><!-- .main_visual end -->
+</body>
+
+</html>

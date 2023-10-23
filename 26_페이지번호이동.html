@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이지번호이동</title>
+    <link href="css/126.css" rel="stylesheet" />
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <script>
+        $(function(){
+            $('.btn a').click(function(e){
+                e.preventDefault(); //a링크 방지 
+            });
+
+            $('.btn ul li').click(function(){
+                //클릭했을 때 index 번호 구하기
+                //.page_wrap div에 해당하는 순서를 찾기
+                //.page_wrap div의 offset().top
+                var idx = $(this).index(); 
+                var page = $('.page_wrap div').eq(idx);
+                var pageTop = page.offset().top; 
+                //버튼을 클릭했을 때 클릭한 요소와 page의 순서를 찾아서
+                //브라우저 세로값을 구함
+
+                //$(window).scrollTop(pageTop);
+                $('html, body').animate({
+                    scrollTop : pageTop
+                }, 1000, 'easeInOutSine'); 
+
+                //버튼을 클릭했을 때 색상 변경
+                //addClass(), removeClass()
+                $('.btn ul li').removeClass('on');
+                $(this).addClass('on'); 
+            }); //.btn ul li click  
+ 
+          
+        }); //jquery end
+    </script>
+</head>
+<body>
+    <div class="btn">
+        <ul>
+            <li class="on"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+        </ul>
+    </div><!-- .btn end -->
+
+    <div class="page_wrap">
+        <div>
+            <h2>page 1</h2>
+        </div>
+        <div>
+            <h2>page 2</h2>
+        </div>
+        <div>
+            <h2>page 3</h2>
+        </div>
+        <div>
+            <h2>page 4</h2>
+        </div>
+    </div><!-- .page_wrap end -->
+</body>
+</html>

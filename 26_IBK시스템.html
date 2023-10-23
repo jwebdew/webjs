@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBK시스템</title>
+    <style>
+        /* font-family: 'Play', sans-serif; */
+        @import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
+
+        /* font-family: 'Noto Sans KR', sans-serif; */
+        @import url('https://fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        body {
+            color: #333;
+            line-height: 1; 
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+        }
+        .inner {
+            max-width: 1440px;
+            width: calc(100% - 20px); 
+            margin: 0 auto;
+            
+        }
+
+        /* header */
+        header {
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.623);
+            background-color: transparent;
+            transition: 0.5s;
+        }
+        header.on {
+            height: 70px;
+            background-color: #fff;
+            color: #333;
+        }
+        header .inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header h1 {
+            font-size: 25px;
+        }
+        header nav {
+            display: flex;
+
+        }
+        header ul {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: 80px;
+        }
+        header ul.gnb li {
+            margin: 0 40px;
+            font-size: 20px;
+        }
+        header ul.right_gnb li {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .page_menu {
+            position: fixed;
+            right: 100px;
+            top: 0;
+            height: 100%;
+            color: #fff;
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: right; 
+            font-size: 14px;
+        } 
+        .page_menu li a {
+            color: rgba(255, 255, 255, 0.575);
+            display: inline-block;
+            padding: 10px;
+            /* background-color: rgba(255, 255, 255, 0.1); */
+            margin: 10px 0;
+            border-radius: 40px;
+            transition: 0.7s;
+            position: relative;
+        }
+        .page_menu li a::before {
+            content: '◉';
+            /* background-color: #fff; */
+              
+             
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -22px;
+
+        }
+        .page_menu li a.on {
+            font-weight: 700;
+            color: #333;
+            background-color: #fff;
+        }
+        .page_menu li a.on::before {
+            color: #fff;
+        }
+        .page_menu li:hover a {
+            color: #333;
+            background-color: #fff;
+        }
+        .page_menu li:hover a::before {
+            color: #fff;
+        }
+        main {
+            
+        }
+        
+        section .title h3 {
+            font-family: 'Play', sans-serif;
+            font-size: 50px;
+        }
+        section .title p {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        section h4 {
+            font-family: 'Play', sans-serif;
+            font-size: 35px;
+        }
+        section {
+           height: 100vh;
+           color: #fff;
+        }
+        section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #main_visual {
+            position: relative;
+        }
+        #main_visual .inner { 
+            position: absolute; 
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+        #main_visual h2 {
+            font-size: 55px;            
+            color: #fff;
+            line-height: 1.4;
+            font-weight: 500;
+            letter-spacing: -2px;
+        }
+        
+        #business {
+            background-color: #3F3B6C;
+            padding: 150px 0;
+        }
+        #information {
+            background-color: #624F82;
+            padding: 150px 0;
+        }
+        #news {
+             
+            background-color: #9F73AB;
+            /* padding: 150px 0; */
+            display: flex;
+        } 
+        #news > div {
+            width: 50%; 
+        } 
+        #news .cont_right { 
+            
+        }
+        #news .cont_right > div {
+            height: 50%;
+            padding: 100px 50px;
+        }
+        #news .cont_right > div:first-child {
+            background-color: #fff;
+            color: #333;
+        }
+        #news .cont_right > div:nth-child(2) {
+            background-color: royalblue;
+            
+        }
+
+        #system { 
+            display: flex;
+            align-items: center;
+            color: #333;
+        } 
+        #system figure {
+            width: 50%;
+            height: 50%;
+            padding: 0 150px;
+        }
+        #system .info {
+            height: 100%;
+            width: 50%;
+            padding: 0 50px;
+            background-color: #e6f0ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #system .info > p {
+            font-size: 37px;
+            line-height: 1.4; 
+            letter-spacing: -2px;
+        }
+        #system .info ul {
+            margin-top: 70px;
+        }
+        #system .info ul li a {
+            font-size: 22px;
+            color: #555;
+            padding: 25px 5px;
+            border-bottom: 1px solid #ccc;
+            width: 250px;
+            display: block;
+            position: relative;
+        }
+        #system .info ul li a::after {
+            content: '>';
+            position: absolute; 
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        footer {
+            background-color: #555;
+            color: rgba(255, 255, 255, 0.733);
+            padding: 50px 0 80px;
+        }
+        footer .inner > ul {
+            display: flex;
+            margin-bottom: 40px;
+        }
+        footer .inner > ul li {
+            margin-right: 30px;
+        }
+        footer .inner > div ul {
+            display: flex;
+            margin-top: 7px;
+        }
+        footer .inner > div ul li {
+            margin-right: 20px;
+        }
+        footer .inner > p {
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.562);
+
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            let content = $('section');
+            let menuBtn = $('.page_menu li');
+            let headerTop = $('header').offset().top;
+
+            menuBtn.click(function(){
+                let idx = $(this).index();
+                let pageNum = $('section').eq(idx);
+                let pageTop = pageNum.offset().top;
+
+                $('html, body').animate({
+                    scrollTop: pageTop
+                }, 500);
+                 
+            });//.page_menu li click 
+
+
+            $(window).scroll(function(){
+                let windowScroll = $(window).scrollTop();
+                let windowScroll2 = windowScroll + 50;
+
+                //스크롤 시 header 스타일 변경
+                console.log(windowScroll)
+                console.log(headerTop)
+                if(windowScroll > headerTop) {
+                    $('header').addClass('on');
+                } else {
+                    $('header').removeClass('on');
+                }
+
+
+                //페이지 이동 시 메뉴 스타일 변경
+                if(windowScroll2 > $('#main_visual').offset().top) {
+                    menuBtn.children('a').removeClass('on');
+                    menuBtn.find('[href="#main_visual"]').addClass('on');
+                    $('body').addClass('main_visual');
+                }  
+
+                if(windowScroll2 > $('#business').offset().top) {
+                    menuBtn.children('a').removeClass('on');
+                    menuBtn.find('[href="#business"]').addClass('on');
+                    $('body').removeClass('main_visual');
+                    $('body').addClass('business');
+                }
+
+                if(windowScroll2 > $('#information').offset().top) {
+                    menuBtn.children('a').removeClass('on');
+                    menuBtn.find('[href="#information"]').addClass('on');
+                }
+
+                if(windowScroll2 > $('#news').offset().top) {
+                    menuBtn.children('a').removeClass('on');
+                    menuBtn.find('[href="#news"]').addClass('on');
+                }
+
+                if(windowScroll2 > $('#system').offset().top) {
+                    menuBtn.children('a').removeClass('on');
+                    menuBtn.find('[href="#system"]').addClass('on');
+                }  
+
+
+            });//window scroll
+
+            // var html = $("html");
+
+            // // 뷰포트에 표시되는 페이지 번호를 나타내는 변수
+            // var page = 1;
+
+            // // 마지막 페이지 번호
+            // var lastPageNo = $("section").length;
+
+            // // HTML 문서가 로드되면 첫 페이지로 이동
+            // // window.setTimeout(function () { $(window).scrollTop(0); }, 10);
+            // html.animate({ scrollTop: 0 }, 1000);
+
+            // // 1. 마우스 휠 버튼을 굴리면
+            // $(window).on("mousewheel", function (event) { 
+            //     // html 요소의 효과가 진행되는 동안에는 wheel 이벤트가 발생하더라도 무시한다!
+            //     if (html.is(":animated")) return;
+
+            //     // 1.1. 마우스 휠 버튼을 아래로 굴리면 다음 페이지로 이동하고
+            //     // 1.2. 마우스 휠 버튼을 위로 굴리면 이전 페이지로 이동한다.
+
+            //     // 마우스 휠 버튼을 굴린 방향에 따라 다음에 이동할 페이지 번호를 계산
+            //     if (event.originalEvent.deltaY > 0) {
+            //         console.log("wheel: DOWN!");
+
+            //         // 마지막 페이지의 다음 페이지는 없으므로, 현재 페이지가 마지막 페이지인 경우
+            //         // 이벤트 핸들러 종료
+            //         if (page == lastPageNo) return;
+                    
+            //         page++;
+            //     }
+            //     else if(event.originalEvent.deltaY < 0) {
+            //         console.log("wheel: UP!");
+
+            //         // 첫 페이지의 이전 페이지는 없으므로, 현재 페이지가 첫 페이지인 경우
+            //         // 이벤트 핸들러 종료
+            //         if (page == 1) return;
+
+            //         page --;
+            //     } 
+
+            //     // 디버그 메시지(debug message)
+            //     // → 프로그램이 실행되는 동안 프로그램 실행 흐름이나 값 등을 확인하기 위해 출력하는 메시지
+            //     console.log("page = " + page);
+
+            //     // 이동할 페이지 번호에 따라 스크롤 높이를 계산
+            //     var scrollTop = $(window).height() * (page - 1);
+
+            //     // 계산한 위치로 부드럽게 스크롤
+            //     html.stop().animate({ "scrollTop": scrollTop });
+            // });
+            
+           
+        })//jquery end
+    </script>
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <h1>
+                <a href="#">IBK시스템</a>
+            </h1>
+            <nav>
+                <ul class="gnb">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">사업영역</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">채용정보</a></li>
+                </ul><!-- .gnb end -->
+
+                <ul class="right_gnb">
+                    <li><a href="#">CONTACT US</a></li>
+                    <li><a href="#">KOR</a></li>
+                </ul><!-- .right_gnb end -->
+            </nav>
+            
+        </div><!-- inner end --> 
+    </header>
+    <ul class="page_menu"> 
+        <li><a class="on" href="#main_visual">메인</a></li>
+        <li><a href="#business">비즈니스</a></li>
+        <li><a href="#information">정보/고객센터</a></li>
+        <li><a href="#news">뉴스/기업소개</a></li>
+        <li><a href="#system">시스템</a></li>
+    </ul><!-- .page_menu end -->
+    
+        <section id="main_visual">
+            <img src="img/main_t01_s01_3.jpg" alt="고객에 대한 신뢰, 치고를 향한 열정 IBK시스템" />
+            <div class="inner">
+                <h2>
+                    고객에 대한 신뢰,<br />치고를 향한 열정<br /> IBK시스템
+                </h2>
+            </div><!-- .inner end --> 
+        </section><!-- #main_visual end -->
+
+        <section id="business">
+            <div class="inner">
+                <div class="title">
+                    <h3>Business Area</h3>
+                    <p>최고의 금융 IT 전문가들의 기술력과 노하우로 금융업무의 경쟁력을 높이고 있습니다.</p>
+                </div><!-- .title end -->
+            </div><!-- .inner end -->
+             
+        </section><!-- #business end -->
+
+        <section id="information">
+            <div class="inner">
+                <div class="title">
+                    <h3>IBK System Information</h3>
+                </div><!-- .title end -->
+            </div><!-- .inner end -->
+            
+        </section><!-- #information end -->
+
+        <section id="news">
+            <div class="slide">
+                <img src="img/bread_01.jpg" alt="" />
+            </div><!-- .slide end -->
+            <div class="cont_right">
+                <div class="company">
+                    <h4>Company</h4>
+                </div><!-- .company end -->
+                <div class="news_list">
+                    <h4>입찰공고</h4>
+                </div><!-- .news_list end -->
+            </div><!-- .cont_right end -->
+            
+        </section><!-- #news end -->
+
+        <section id="system"> 
+            <figure>
+                <img src="img/20221020160204231qnbozogekysapwm.jpg" alt="" />
+            </figure>
+            <div class="info">
+                <p>창의성을 가지고<br />자기혁신을 추구하는 창조인!<br />바로 <span>IBK System이 바라는 사람입니다.</span></p>
+                <ul>
+                    <li><a href="#">인재상</a></li>
+                    <li><a href="#">인사제도</a></li>
+                    <li><a href="#">복리후생</a></li>
+                    <li><a href="#">채용공고</a></li>
+                </ul>
+            </div> 
+        </section><!-- #system end -->
+     
+    <footer>
+        <div class="inner">
+            <ul>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">불편부당신고란</a></li>
+                <li><a href="#">이메인무단수집거부</a></li>
+            </ul>
+            <div>
+                <p>서울시 중구 퇴계로 141-7 뉴서울빌딩 10F - 13F (주)IBK 시스템(구 주소 : 서울시 중구 충무로 2가 62-7)</p>
+                <ul>
+                    <li>대표전화 : 02.3407.6600</li>
+                    <li>팩스 : 02.3407.6601</li>
+                </ul> 
+            </div> 
+            <p>Copyright © 2020 IBK System Co. Ltd All Reserved.</p>
+        </div><!-- .inner end -->
+    </footer>
+</body>
+</html>

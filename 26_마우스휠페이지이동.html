@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+     
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            /* padding: 3em; */
+            font-size: 1.6em;
+            background-color: #444;
+        }
+
+        .page {
+            height: 100vh;
+
+            /* h2 요소가 .page 요소의 영역을 기준으로 배치되도록 설정 */
+            position: relative;
+        }
+
+        .page:nth-child(even) { background-color: #333; }
+
+        .page > h2 {
+            /* .page 요소의 영역을 기준으로 가운데에 배치 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            font-size: 20em;
+            font-weight: bold;
+            text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+         $(function () {
+            /* https://codepen.io/codeamor/embed/vYLpVqw?height=265&theme-id=dark&default-tab=js,result */
+
+            // window.addEventListener("wheel", function (event) {
+            //     event.preventDefault();
+            // }, { passive: false });
+
+            var html = $("html");
+
+            // 뷰포트에 표시되는 페이지 번호를 나타내는 변수
+            var page = 1;
+
+            // 마지막 페이지 번호
+            var lastPageNo = $(".page").length;
+
+            // HTML 문서가 로드되면 첫 페이지로 이동
+            // window.setTimeout(function () { $(window).scrollTop(0); }, 10);
+            html.animate({ scrollTop: 0 }, 1000);
+
+            // 1. 마우스 휠 버튼을 굴리면
+            $(window).on("mousewheel", function (event) { 
+                // html 요소의 효과가 진행되는 동안에는 wheel 이벤트가 발생하더라도 무시한다!
+                if (html.is(":animated")) return;
+
+                // 1.1. 마우스 휠 버튼을 아래로 굴리면 다음 페이지로 이동하고
+                // 1.2. 마우스 휠 버튼을 위로 굴리면 이전 페이지로 이동한다.
+
+                // 마우스 휠 버튼을 굴린 방향에 따라 다음에 이동할 페이지 번호를 계산
+                if (event.originalEvent.deltaY > 0) {
+                    console.log("wheel: DOWN!");
+
+                    // 마지막 페이지의 다음 페이지는 없으므로, 현재 페이지가 마지막 페이지인 경우
+                    // 이벤트 핸들러 종료
+                    if (page == lastPageNo) return;
+                    
+                    page++;
+                }
+                else if(event.originalEvent.deltaY < 0) {
+                    console.log("wheel: UP!");
+
+                    // 첫 페이지의 이전 페이지는 없으므로, 현재 페이지가 첫 페이지인 경우
+                    // 이벤트 핸들러 종료
+                    if (page == 1) return;
+
+                    page --;
+                } 
+
+                // 디버그 메시지(debug message)
+                // → 프로그램이 실행되는 동안 프로그램 실행 흐름이나 값 등을 확인하기 위해 출력하는 메시지
+                console.log("page = " + page);
+
+                // 이동할 페이지 번호에 따라 스크롤 높이를 계산
+                var scrollTop = $(window).height() * (page - 1);
+
+                // 계산한 위치로 부드럽게 스크롤
+                html.stop().animate({ "scrollTop": scrollTop });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="page">
+        <h2>1</h2>
+    </div>
+    <div class="page">
+        <h2>2</h2>
+    </div>
+    <div class="page">
+        <h2>3</h2>
+    </div>
+    <div class="page">
+        <h2>4</h2>
+    </div>
+    <div class="page">
+        <h2>5</h2>
+    </div>
+    <div class="page">
+        <h2>6</h2>
+    </div>
+    <div class="page">
+        <h2>7</h2>
+    </div>
+    <div class="page">
+        <h2>8</h2>
+    </div>
+    <div class="page">
+        <h2>9</h2>
+    </div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        body {
+            color: #333;
+            line-height: 1;
+        }
+
+        body,
+        html {
+            transition: 1s;
+        }
+
+        header {
+            height: 100px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: royalblue;
+            color: #fff;
+        }
+
+        header .inner {
+            height: 100%;
+            max-width: 1440px;
+            width: 95%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        header nav ul li {
+            margin: 0 30px;
+        }
+
+        header nav ul li.on {
+            font-weight: bold;
+            color: yellow;
+
+        }
+
+        header nav ul li a.on {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        .main_visual {
+            height: calc(100vh - 100px);
+            margin-top: 100px;
+        }
+
+        .main_visual img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+
+        }
+
+        .sec {
+            height: 100vh;
+        }
+
+        .sec h3 {
+            font-size: 50px;
+            text-align: center;
+            padding-top: 200px;
+        }
+
+        .sec {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: 0.5s;
+        }
+
+        .sec.cont01 {
+            background-image: url('img/20220929175407419lebunpoteiasaaj.jpg');
+        }
+
+        .sec.cont02 {
+            background-color: tan;
+        }
+
+        .sec.cont03 {
+            background-image: url('img/20220929175728610svxlsxntqcghlaa.jpg');
+        }
+
+        .sec.cont04 {
+            background-color: teal;
+            color: #fff;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('nav a').click(function () {
+                $(this).preventDefault(); //a링크 방지 
+                // $('nav li a').removeClass('on');
+                // $(this).addClass('on');
+            });
+
+
+            $('nav li').click(function () {
+                let idx = $(this).index();
+                let secPage = $('.sec').eq(idx);
+                let pageTop = secPage.offset().top;
+
+                console.log(pageTop);
+
+                //$(window).scrollTop(pageTop);
+                $('html, body').animate({
+                    scrollTop: pageTop
+                }, 500);
+
+            });
+
+
+
+
+            let headerTop = $('header').offset().top;
+            let header = $('header');
+            $(window).scroll(function(){ 
+                let secPage = $('.sec').eq($(this).index());
+                let pageTop = secPage.offset().top;
+
+                //let scrollBar = $(window).scrollTop();
+                var pos = $(window).scrollTop();
+                var pos2 = pos + 50;
+                //var scrollBottom = pos + $(window).height();
+
+                // Link Highlighting
+                if(headerTop < pos) {
+                    header.addClass('on')
+                } else {
+                    header.removeClass('on')
+                }
+
+                console.log(pos2)
+                if (pos >= $('#projects').offset().top) {
+                    //현재 스크롤 위치에 +50한 값이 아이디값의 위치 top 값보다 크면 highlightLink 함수를 불러 온다.
+                    //highlightLink('projects');
+                    $('nav li a').removeClass('on'); 
+                    $('nav li:nth-child(1) a').addClass('on');   
+                                     
+                } else {
+                    $('nav li a').removeClass('on'); 
+                    //메인비주얼이 화면에 보일 때 클래스명 삭제하기 위한 목적
+                }
+                if (pos >= $('#skills').offset().top) { 
+                    // highlightLink('skills'); 
+                    $('nav li a').removeClass('on'); 
+                    $('nav li:nth-child(2) a').addClass('on');   
+
+                } 
+                if (pos >= $('#aboutme').offset().top) { 
+                    $('nav li a').removeClass('on'); 
+                    $('nav li:nth-child(3) a').addClass('on'); 
+
+                } 
+                if (pos >= $('#contact').offset().top) { 
+                    // highlightLink('contact') 
+                    $('nav li a').removeClass('on'); 
+                    $('nav li:nth-child(4) a').addClass('on');
+                } 
+
+
+            });
+
+            // function highlightLink(link) {
+            //     $('nav li a').removeClass('on');
+            //     $("nav").find('[href="#' + link + '"]').addClass('on');
+            // }
+
+            //highlightLink 함수가 실행되면 먼저 nav에 .on 클래스를 다 없애고 href에 해당 link가 있는 버튼을 찾아서 active 클래스를 추가해준다.
+
+        })//jquery end
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <h1>
+                <a href="#">반도유보라</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="#projects">브랜드</a></li>
+                    <li><a href="#skills">단지정보</a></li>
+                    <li><a href="#aboutme">고객서비스</a></li>
+                    <li><a href="#contact">계약자포털</a></li>
+                </ul>
+            </nav>
+        </div><!-- .inner end -->
+    </header>
+    <section class="main_visual">
+        <img src="img/visual1.jpg" alt="" />
+    </section><!-- .main_visual end -->
+
+    <section id="projects" class="sec cont01">
+        <h3>브랜드</h3>
+    </section><!-- cont01 end -->
+
+    <section id="skills" class="sec cont02">
+        <h3>단지정보</h3>
+    </section><!-- cont01 end -->
+
+    <section id="aboutme" class="sec cont03">
+        <h3>고객서비스</h3>
+    </section><!-- cont01 end -->
+
+    <section id="contact" class="sec cont04">
+        <h3>계약자포털</h3>
+    </section><!-- cont01 end -->
+</body>
+
+</html>

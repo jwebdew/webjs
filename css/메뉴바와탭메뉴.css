@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'EarlyFontDiary';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EarlyFontDiary.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    color: #333;
+    line-height: 1;
+    font-family: 'EarlyFontDiary';
+}
+
+.cont01 {
+    max-width: 1440px;
+    width: 95%;
+    margin: 150px auto;
+}
+
+.cont01 .tab_menu {
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 40px;
+    margin: 20px 0 40px;
+    position: relative;
+}
+
+.cont01 .tab_menu ul {
+    display: flex;
+}
+
+.cont01 .tab_menu ul li {
+    width: 100px;
+    position: relative;
+    z-index: 9;
+}
+
+.cont01 .tab_menu .bar {
+    width: 100px;
+    height: 100%;
+    border-radius: 40px;
+    background-color: yellow;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cont01 .tab_menu .bar span {
+    position: absolute;
+    left: -999999px;
+}
+.cont01 .list .item.on {
+    display: block;
+}
+.cont01 .list .item {
+    width: 100%;
+    height: 75vh;
+    position: relative;
+    overflow: hidden;
+    display: none;
+}
+
+.cont01 .list .item::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.512);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: 0.5s;
+}
+
+.cont01 .list .item:hover::before {
+    top: 0;
+}
+
+.cont01 .list .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cont01 .list .item .info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 50px;
+    background-color: #fff;
+}
+
+.cont01 .list .item:hover .info {
+    background-color: transparent;
+    color: #fff;
+    transition: .5s;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭메뉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            color: #333;
+            line-height: 1;
+        }
+
+        .cont01 .btn {
+            display: flex;
+            justify-content: center;
+            margin: 100px 0 40px;
+        }
+
+        .cont01 .btn li {
+            padding: 0 20px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #555;
+            border-radius: 40px;
+            margin: 0 10px;
+        }
+
+        .cont01 .btn li.on {
+            background-color: teal;
+            color: #fff;
+        }
+
+        .cont01 .list {
+            width: 1280px;
+            margin: 0 auto;
+        }
+
+        .cont01 .list .item {
+            width: 100%;
+            height: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            display: none;
+        }
+
+        .cont01 .list .item.on {
+            display: flex;
+        }
+
+        .cont01 .list .item img {
+            width: 60%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cont01 .list .item div {
+            width: 38%;
+            font-size: 22px;
+            line-height: 1.5;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            //1. btn안에 있는 li를 클릭했을 때
+            //btn안에 있는 모든 li한테 클래스명on 제거
+            //내가 클릭한 li한테 클래스명 on붙여줌
+            $('.btn li').click(function () {
+                $('.btn li').removeClass('on');
+                $(this).addClass('on');
+
+                //li를 클릭한 순서값에 따라서
+                //item한테 클래스명 on이 추가
+                $('.list .item').removeClass('on');
+                $('.list .item').eq($(this).index()).addClass('on');
+            });
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <section class="cont01">
+        <ul class="btn">
+            <li class="on">menu01</li>
+            <li>menu02</li>
+            <li>menu03</li>
+            <li>menu04</li>
+        </ul><!-- .btn end -->
+        <div class="list">
+            <div class="item on">
+                <img src="img/food1.jpg" alt="" />
+                <div>
+                    <h4>menu01</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut cumque, minus animi maiores
+                        quibusdam autem quidem repellendus recusandae repudiandae ipsam. Deleniti soluta similique, quos
+                        facilis fugit placeat voluptatibus rem sit.</p>
+                </div>
+            </div><!-- .item end -->
+            <div class="item">
+                <img src="img/food1.jpg" alt="" />
+                <div>
+                    <h4>menu02</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut cumque, minus animi maiores
+                        quibusdam autem quidem repellendus recusandae repudiandae ipsam. Deleniti soluta similique, quos
+                        facilis fugit placeat voluptatibus rem sit.</p>
+                </div>
+            </div><!-- .item end -->
+            <div class="item">
+                <img src="img/food1.jpg" alt="" />
+                <div>
+                    <h4>menu03</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut cumque, minus animi maiores
+                        quibusdam autem quidem repellendus recusandae repudiandae ipsam. Deleniti soluta similique, quos
+                        facilis fugit placeat voluptatibus rem sit.</p>
+                </div>
+            </div><!-- .item end -->
+            <div class="item">
+                <img src="img/food1.jpg" alt="" />
+                <div>
+                    <h4>menu04</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut cumque, minus animi maiores
+                        quibusdam autem quidem repellendus recusandae repudiandae ipsam. Deleniti soluta similique, quos
+                        facilis fugit placeat voluptatibus rem sit.</p>
+                </div>
+            </div><!-- .item end -->
+        </div><!-- .list end -->
+    </section><!-- .cont01 end -->
+</body>
+
+</html>

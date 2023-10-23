@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 배경색 변경</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        section {
+            width: 100%;
+            height: 100vh;
+        }
+
+        #bg {
+
+            background-color: #d87093;
+        }
+
+        .cont02 {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        #bg_img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cont02 #btn2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .cont02 #btn3 {
+            position: absolute;
+            top: 0;
+            left: 100px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //배열 p.375
+            //: 여러개의 데이터 값을 저장할 수 있는 공간 
+            let colorList = ['#d87093', '#ffcc00', '#ff0000', '#70a9d8'];//배열
+            let i = 0;
+            let btnBgChange = document.getElementById('btn1');
+            let bodyBg = document.getElementById('bg');
+
+            btnBgChange.onclick = function () {
+                i++;
+                console.log(i);
+                //i가(0이) color의 값(4)보다 크거나 같을 때 i는 다시 0의 값을 가진다.
+                if (i >= colorList.length) {
+                    i = 0;
+                }
+                bodyBg.style.backgroundColor = colorList[i];
+            }//btn.onclick
+
+
+            let img1 = 'img/nature1.jpg';
+            let img2 = 'img/nature2.jpg';
+            let img3 = 'img/nature3.jpg';
+            let img4 = 'img/nature4.jpg';
+            let imgList = [img1, img2, img3, img4];
+
+            let btnImgChange = document.getElementById('btn2');
+            let btnImgChangePrev = document.getElementById('btn3');
+            let sectionImg = document.getElementById('bg_img');
+            //sectionImg.style.left = '0';
+
+            btnImgChange.onclick = function () {
+                i++;
+                if (i >= imgList.length) {
+                    i = 0;
+                }
+                sectionImg.src = imgList[i];
+
+            }
+        }//window.onload
+    </script>
+</head>
+
+<body>
+    <section id="bg">
+        <button type="button" id="btn1">배경색변경</button>
+    </section>
+
+    <section class="cont02">
+        <img id="bg_img" src="img/nature1.jpg" alt="" />
+        <button type="button" id="btn2">다음</button>
+    </section>
+</body>
+
+
+</html>

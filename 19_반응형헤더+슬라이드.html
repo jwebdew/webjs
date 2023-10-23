@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형헤더 + 좌우슬라이드</title>
+    <link href="css/19_반응형헤더.css" rel="stylesheet" />
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            //메뉴 드롭다운(싱글 드롭다운)
+            let depth01 = $('.depth01'); 
+            depth01.mouseenter(function(){ 
+                $(this).children('.depth02').stop().slideDown();
+            });
+            depth01.mouseleave(function(){ 
+                $(this).children('.depth02').stop().slideUp();
+            });
+            
+            //인수(argument) 
+            //1.노드찾아서 저장
+            let slides = document.querySelector('.slides'); //슬라이드 전체를 감싸는 영역
+            let slide = document.querySelectorAll('.slides > div'); //슬라이드 각각의 영역
+            let slideCount = slide.length; //슬라이드 개수
+
+
+            //👍👍👍👍👍슬라이드 구현 추 html에 추가하면서 스크랍트 작성하기
+            let pageNum = document.querySelector('.num');
+            let pageNumTotal = document.querySelector('.total');
+            pageNumTotal.innerText = slideCount;
+            //end 👍👍👍👍👍슬라이드 구현 추 html에 추가하면서 스크랍트 작성하기
+
+
+            //2. 슬라이드 하나의 너비 구하기
+            //let slideWidth = 100 + '%';
+
+            //3. 슬라이드 전체 너비 구하기
+            slides.style.width = 100 * slideCount + '%';
+            //console.log(100 * slideCount + '%')
+
+            //4. 초기값 설정하기
+            let i = 0; //슬라이드 시작(초기값)
+
+
+            //5. 슬라이드 구현 시 우측에서 좌측으로 페이지 이동에 대한 값 구하기(함수로 작성)
+            function slideMove() {
+                i++;
+                slides.style.left = -i * 100 + '%';
+                console.log(i)
+            } //slideMove()
+            // function slideopacity() {
+            //     let opacityNum = 30;
+            //     slide.style.opacity = opacityNum / 100;
+            // } //slideMove()
+
+            function mainSlides() {
+                //setInterval() 함수는 어떤 코드를 일정한 시간 간격을 두고 반복해서 실행하고 싶을 때 사용합니다.
+                setInterval(() => {
+                    //슬라이드 i값이 페이지 개수와 같지 않을 때//0, 1, 2
+
+                    //0 <= 2
+                    if (i < slideCount - 1) {
+                        slideMove();
+
+                    } else {
+                        slides.style.left = 0;
+                        i = 0;
+
+
+                    }
+
+                    console.log(i)
+                    console.log(i < slideCount - 1)
+
+
+                    //👍👍👍👍👍슬라이드 구현 추 html에 추가하면서 스크랍트 작성하기
+                    pageNum.innerText = i + 1;
+                }, 3000);
+
+            }//mainSlides()
+
+
+
+            //6. setinterval(반복실행)을 이용하여 함수로 저장하기
+            mainSlides();
+
+
+
+            //7. 3초마다 페이지 이동(6번실행) 슬라이드 개수가 넘어갈 경우 페이지의 값은 다시 0으로 되돌리기
+
+
+
+
+        });// jqeury end
+    </script>
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <h1>
+                <a href="#">메뉴슬라이드다운</a>
+            </h1>
+            <nav class="pc pc_gnb">
+                <ul class="gnb">
+                    <li class="depth01">
+                        <a href="#">메뉴1</a>
+                        <ul class="depth02">
+                            <li><a href="#">메뉴1 - 1</a></li>
+                            <li><a href="#">메뉴1 - 2</a></li>
+                            <li><a href="#">메뉴1 - 3</a></li>
+                        </ul><!-- .depth02 -->
+                    </li><!-- .depth1 -->
+                    <li class="depth01">
+                        <a href="#">메뉴2</a>
+                        <ul class="depth02">
+                            <li><a href="#">메뉴2 - 1</a></li>
+                            <li><a href="#">메뉴2 - 2</a></li>
+                            <li><a href="#">메뉴2 - 3</a></li>
+                        </ul><!-- .depth02 -->
+                    </li><!-- .depth1 -->
+                    <li class="depth01">
+                        <a href="#">메뉴3</a>
+                        <ul class="depth02">
+                            <li><a href="#">메뉴3 - 1</a></li>
+                            <li><a href="#">메뉴3 - 2</a></li>
+                            <li><a href="#">메뉴3 - 3</a></li>
+                        </ul><!-- .depth02 -->
+                    </li><!-- .depth1 -->
+                    <li class="depth01">
+                        <a href="#">메뉴4</a>
+                        <ul class="depth02">
+                            <li><a href="#">메뉴4 - 1</a></li>
+                            <li><a href="#">메뉴4 - 2</a></li>
+                            <li><a href="#">메뉴4 - 3</a></li>
+                            <li><a href="#">메뉴4 - 4</a></li>
+                        </ul><!-- .depth02 -->
+                    </li><!-- .depth1 -->
+                </ul>
+            </nav><!-- .pc_gnb -->
+            <ul class="pc right_gnb">
+                <li><a href="#">정보검색</a></li>
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+            </ul><!-- .right_gnb -->
+
+            <!---------------------------------------- 1024이하부터 진행 -------------------------------------------->
+            <i class="mobile menu_open"><span>메뉴보기</span></i>
+            <nav class="mobile mobile_gnb">
+                <i class="menu_close"><span>메뉴닫기</span></i>
+                <ul class="right_gnb">
+                    <li><a href="#">정보검색</a></li>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                </ul><!-- .right_gnb -->
+
+                <ul class="gnb">
+                    <li class="depth01">
+                        <a href="#">메뉴1</a>
+                        <ul class="depth02">
+                            <li><a href="#">메뉴1 - 1</a></li>
+                            <li><a href="#">메뉴1 - 2</a></li>
+                            <li><a href="#">메뉴1 - 3</a></li>
+                        </ul><!-- .depth02 -->
+                    </li><!-- .depth1 -->
+                    <li class="depth01">
+                        <a href="#">메뉴2</a>
+                        <ul class="depth02">
+                            <li><a href="#">메뉴2 - 1</a></li>
+                            <li><a href="#">메뉴2 - 2</a></li>
+                            <li><a href="#">메뉴2 - 3</a></li>
+                        </ul><!-- .depth02 -->
+                    </li><!-- .depth1 -->
+                    <li class="depth01">
+                        <a href="#">메뉴3</a>
+                        <ul class="depth02">
+                            <li><a href="#">메뉴3 - 1</a></li>
+                            <li><a href="#">메뉴3 - 2</a></li>
+                            <li><a href="#">메뉴3 - 3</a></li>
+                        </ul><!-- .depth02 -->
+                    </li><!-- .depth1 -->
+                    <li class="depth01">
+                        <a href="#">메뉴4</a>
+                        <ul class="depth02">
+                            <li><a href="#">메뉴4 - 1</a></li>
+                            <li><a href="#">메뉴4 - 2</a></li>
+                            <li><a href="#">메뉴4 - 3</a></li>
+                        </ul><!-- .depth02 -->
+                    </li><!-- .depth1 -->
+                </ul>
+            </nav><!-- .pc_gnb -->
+        </div><!-- .inner end -->
+    </header>
+    <section class="main_visual">
+        <div class="slides_wrap">
+            <div class="slides">
+                <div>
+                    <img src="img/img1.jpg" alt="" />
+                    <p>메인 슬라이드 1</p>
+                </div>
+                <div>
+                    <img src="img/img2.jpg" alt="" />
+                    <p>메인 슬라이드 2</p>
+                </div>
+                <div>
+                    <img src="img/img3.jpg" alt="" />
+                    <p>메인 슬라이드 3</p>
+                </div> 
+            </div><!-- .slides end -->
+
+            <ul class="page_number">
+                <li class="num">1</li> /
+                <li class="total"></li>
+            </ul>
+        </div><!-- .slides_wrap -->
+    </section><!-- .main_visual end -->
+</body>
+</html>

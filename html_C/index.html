@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹사이트제작 C</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.css">
+    <link rel="stylesheet" href="css/main.css" />
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>
+                <a href="#">hasujeong</a>
+            </h1>
+            <nva class="pc_gnb">
+                <ul>
+                    <li>
+                        <a href="#">메뉴01</a>
+                        <ul>
+                            <li><a href="#">메뉴01-1</a></li>
+                            <li><a href="#">메뉴01-2</a></li>
+                            <li><a href="#">메뉴01-3</a></li>
+                            <li><a href="#">메뉴01-4</a></li>
+                            <li><a href="#">메뉴01-5</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">메뉴02</a>
+                        <ul>
+                            <li><a href="#">메뉴02-1</a></li>
+                            <li><a href="#">메뉴02-2</a></li>
+                            <li><a href="#">메뉴02-3</a></li>
+                            <li><a href="#">메뉴02-4</a></li>
+                            <li><a href="#">메뉴02-5</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">메뉴03</a>
+                        <ul>
+                            <li><a href="#">메뉴03-1</a></li>
+                            <li><a href="#">메뉴03-2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">메뉴04</a>
+                        <ul>
+                            <li><a href="#">메뉴04-1</a></li>
+                            <li><a href="#">메뉴04-2</a></li>
+                            <li><a href="#">메뉴04-3</a></li>
+                            <li><a href="#">메뉴04-4</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">메뉴05</a>
+                    </li>
+                </ul>
+            </nva><!-- .pc_gnb -->
+
+
+            <!-- 모바일메뉴 -->
+            <i class="mobile menu_open xi-bars"><span>메뉴보기</span></i>
+            <nva class="mobile mobile_gnb">
+                <i class="menu_close xi-close"><span>메뉴닫기</span></i>
+                <ul>
+                    <li>
+                        <a href="#">메뉴01</a>
+                        <ul>
+                            <li><a href="#">메뉴01-1</a></li>
+                            <li><a href="#">메뉴01-2</a></li>
+                            <li><a href="#">메뉴01-3</a></li>
+                            <li><a href="#">메뉴01-4</a></li>
+                            <li><a href="#">메뉴01-5</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">메뉴02</a>
+                        <ul>
+                            <li><a href="#">메뉴02-1</a></li>
+                            <li><a href="#">메뉴02-2</a></li>
+                            <li><a href="#">메뉴02-3</a></li>
+                            <li><a href="#">메뉴02-4</a></li>
+                            <li><a href="#">메뉴02-5</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">메뉴03</a>
+                        <ul>
+                            <li><a href="#">메뉴03-1</a></li>
+                            <li><a href="#">메뉴03-2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">메뉴04</a>
+                        <ul>
+                            <li><a href="#">메뉴04-1</a></li>
+                            <li><a href="#">메뉴04-2</a></li>
+                            <li><a href="#">메뉴04-3</a></li>
+                            <li><a href="#">메뉴04-4</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">메뉴05</a>
+                    </li>
+                </ul>
+            </nva><!-- .mobile_gnb -->
+        </div>
+    </header>
+    <section class="main_visual">
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/main_visual.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/food1.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/food2.jpg" alt="" />
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section><!-- .main_visual end -->
+
+    <section class="cont01">
+        <div class="title">
+            <h3>컨텐츠 제목 첫번째</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+        </div><!-- .title end -->
+        <div class="cont01_list">
+            <div class="big_image">
+                <figure>
+                    <img src="img/food1.jpg" alt="큰이미지">
+                </figure>
+                <h4>아이템 테마 1</h4>
+                <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem vel molestias,
+                    excepturi consequuntur similique quas ipsa magni hic odit nulla, quae possimus perspiciatis
+                    voluptates adipisci qui cupiditate amet unde non?</p>
+
+            </div>
+            <div class="list">
+                <div class="item">
+                    <a href="#">
+                        <figure>
+                            <img src="img/food1.jpg" alt="" />
+                        </figure>
+                        <h4>아이템 테마 1</h4>
+                        <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem vel molestias,
+                            excepturi consequuntur similique quas ipsa magni hic odit nulla, quae possimus perspiciatis
+                            voluptates adipisci qui cupiditate amet unde non?</p>
+                    </a>
+                </div><!-- .item 1 end -->
+
+                <div class="item">
+                    <a href="#">
+                        <figure>
+                            <img src="img/food2.jpg" alt="" />
+                        </figure>
+                        <h4>아이템 테마 2</h4>
+                        <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem vel molestias,
+                            excepturi consequuntur similique quas ipsa magni hic odit nulla, quae possimus perspiciatis
+                            voluptates adipisci qui cupiditate amet unde non?</p>
+                    </a>
+                </div><!-- .item 1 end -->
+
+                <div class="item">
+                    <a href="#">
+                        <figure>
+                            <img src="img/food3.jpg" alt="" />
+                        </figure>
+                        <h4>아이템 테마 3</h4>
+                        <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem vel molestias,
+                            excepturi consequuntur similique quas ipsa magni hic odit nulla, quae possimus perspiciatis
+                            voluptates adipisci qui cupiditate amet unde non?</p>
+                    </a>
+                </div><!-- .item 1 end -->
+
+                <div class="item">
+                    <a href="#">
+                        <figure>
+                            <img src="img/food4.jpg" alt="" />
+                        </figure>
+                        <h4>아이템 테마 4</h4>
+                        <p class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem vel molestias,
+                            excepturi consequuntur similique quas ipsa magni hic odit nulla, quae possimus perspiciatis
+                            voluptates adipisci qui cupiditate amet unde non?</p>
+                    </a>
+                </div><!-- .item 1 end -->
+
+            </div><!-- .list end -->
+        </div><!-- .cont01_list end -->
+
+    </section><!-- .cont01 end -->
+    <section class="cont02">
+        <div class="title">
+            <h3>컨텐츠 제목 두번째</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+        </div><!-- .title -->
+        <div class="list">
+            <div class="item">
+                <strong>테마 1</strong>
+                <p>가을로 이름을 잔디가 자랑처럼 없이 이름자를 이름을 때 위에 계십니다. 오면 그리고 별빛이 지나고 거외다.</p>
+            </div><!-- .item1 end -->
+            <div class="item">
+                <strong>테마 2</strong>
+                <p>가득 다 애기 별에도 하나에 동경과 청춘이 별 이 까닭입니다. 잔디가 사람들의 말 같이 이네들은 당신은 풀이 것은 위에도 듯합니다.</p>
+            </div><!-- .item1 end -->
+            <div class="item">
+                <strong>테마 3</strong>
+                <p>하늘에는 아침이 남은 헤일 봅니다. 가슴속에 이국 이 흙으로 아무 이제 잠, 가득 하나에 버리었습니다.</p>
+            </div><!-- .item1 end -->
+            <div class="item">
+                <strong>테마 4</strong>
+                <p>멀듯이, 아이들의 하나에 별 한 당신은 북간도에 차 거외다. 시인의 이국 너무나 소녀들의 나는 패, 듯합니다.</p>
+            </div><!-- .item1 end -->
+            <div class="item">
+                <strong>테마 5</strong>
+                <p>때 별을 사람들의 이네들은 이웃 슬퍼하는 시와 별이 버리었습니다. 별 이름과 언덕 것은 하나에 별이 불러 사랑과 봅니다. 나는 가슴속에 이런 쓸쓸함과 계집애들의 다하지 까닭입니다.
+                </p>
+            </div><!-- .item1 end -->
+        </div><!-- .list end -->
+    </section><!-- .cont02 end -->
+    <footer>
+
+        <ul>
+            <li>대표 : 하수정</li>
+            <li>사업자등록번호 : 010-00-00000</li>
+            <li>전화 : <a href="tel:051-234-1234">051-234-1234</a></li>
+            <li>팩스 : 070-0000-1234</li>
+        </ul>
+        <p>Copyright 2023.hasujeong.All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>

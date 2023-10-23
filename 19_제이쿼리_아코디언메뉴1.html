@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아코디언메뉴1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            line-height: 1;
+            color: #333;
+        }
+
+        nav {
+            max-width: 960px;
+            width: 95%;
+            margin: 10px auto;
+        }
+
+        nav>ul .depth01>a {
+            height: 35px;
+            line-height: 35px;
+            background-color: palevioletred;
+            font-size: 17px;
+            font-weight: bold;
+            padding-left: 10px;
+            color: #fff;
+            display: block;
+        }
+
+        nav>ul .depth01 .depth02 {
+            display: none;
+        }
+
+        nav>ul .depth01 .depth02 li a {
+            display: block;
+            background-color: rgb(252, 255, 186);
+            line-height: 35px;
+            padding-left: 10px;
+            margin-bottom: 2px;
+        }
+    </style>
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            //바로 뒤에 있는 형제 선택자 next();
+            //바로 앞에 있는 형제 선택자 prev();
+            //나를 제외한 형제 선택자 siblings();  
+
+            $('.depth01 > a').click(function () {
+                //a태그를 클릭했을 때 
+                //열려있는 2차메뉴는 모두 닫하고(slideUp),
+                //클릭한 a태그 바로뒤에 있는 2차메뉴가
+                //닫혀있을 대 열리도록(slideDown) 설정
+                //조건식 => 내가 클릭한 요소(a태그)의 바로뒤에 있는(.depth02)
+                //형제요소가 display가 none과 같을 때
+
+                //내가 클릭한 = this
+                //바로 뒤에 있는 형제선택자 = next()
+
+
+                //slideToggle()
+                $(this).next().slideToggle();
+            });//a태그를 클릭했을 때
+
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="depth01">
+                    <a href="#">menu01</a>
+                    <ul class="depth02">
+                        <li><a href="#">sub0101</a></li>
+                        <li><a href="#">sub0102</a></li>
+                        <li><a href="#">sub0103</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+                <li class="depth01">
+                    <a href="#">menu02</a>
+                    <ul class="depth02">
+                        <li><a href="#">sub0201</a></li>
+                        <li><a href="#">sub0202</a></li>
+                        <li><a href="#">sub0203</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+                <li class="depth01">
+                    <a href="#">menu03</a>
+                    <ul class="depth02">
+                        <li><a href="#">sub0301</a></li>
+                        <li><a href="#">sub0302</a></li>
+                        <li><a href="#">sub0303</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+            </ul>
+        </nav>
+    </header>
+</body>
+
+</html>

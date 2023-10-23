@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>년/월/일/요일</title>
+    <meta charset="UTF-8" />
+    <script>
+      //날짜객체 : 날짜를 저장하고,
+      //날짜와 관련된 메서드를 제공하는 객체
+      //Date객체를 이용하여 표현
+      //날짜객체인 Date객체를 사용하기 위한
+      //선언 => new Date();
+
+      let now = new Date();
+      let year = now.getFullYear(); //년도
+      let day = now.getDay();
+      let weekDay = [
+        "일요일",
+        "월요일",
+        "화요일",
+        "수요일",
+        "목요일",
+        "금요일",
+        "토요일"
+      ];
+      //요일 => getDay(); //0 ~ 6
+
+      let dayMonth = now.getMonth();
+      //월 => getMonth(); //월 (0 ~ 11)
+      let monthLIst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+      let dayDate = now.getDate();
+      //일 => getDate(); //일 (1 ~ 31)
+      document.write(
+        year + "년" + monthLIst[dayMonth] + "월" + dayDate + "일" + weekDay[day]
+      ); //1
+    </script>
+  </head>
+
+  <body></body>
+</html>

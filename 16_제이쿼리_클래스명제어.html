@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 스타일 작성 -->
+    <style>
+        * {margin: 0; padding: 0;}
+        li {list-style: none;}
+        a {text-decoration: none; color: #333;}
+
+        /* 스타일적용 */
+        header {
+            /* background-color: #333;  */
+            /* height: 50px; line-height: 50px; */
+            position: fixed;
+            top: 100px;
+            left: 50px;
+            /* width: 100%; */
+            z-index: 9;
+        }
+        header ul {
+            /* display: flex;
+            justify-content: center; */
+        }
+        header ul li {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #fff; 
+            color: #333;
+            text-align: center;
+            line-height: 100px;
+            margin: 20px 0;
+        }
+        header ul li a { 
+            display: block;
+        }
+        header ul li.on {
+            background-color: #ff0000; 
+            color: #333;
+        }
+        header ul li.on a {
+            color: #fff;
+        }
+        section {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            letter-spacing: 2px;
+        }
+        section:nth-of-type(1) {
+            background-color: #FFD36E;
+        }
+        section:nth-of-type(2) {
+            background-color: #FFF56D;
+        }
+        section:nth-of-type(3) {
+            background-color: #99FFCD;
+        }
+        section:nth-of-type(4) {
+            background-color: #9FB4FF;
+        }
+    </style>
+
+
+    <!-- 스크립트 작성 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        $(function(){
+            $('.menu li').click(function(){
+                $('.menu li').removeClass('on');
+                $(this).addClass('on');
+
+            });
+        }); //jquery end
+    </script>
+</head>
+<body>
+    <header>
+        <ul class="menu">
+            <li class="on"><a href="#menu1">menu01</a></li>
+            <li><a href="#menu2">menu02</a></li>
+            <li><a href="#menu3">menu03</a></li>
+            <li><a href="#menu4">menu04</a></li>
+        </ul>
+    </header>
+    <section id="menu1">
+        <p>menu01 content</p>
+    </section><!-- #menu1 -->
+
+    <section id="menu2">
+        <p>menu02 content</p>
+    </section><!-- #menu1 -->
+
+    <section id="menu3">
+        <p>menu03 content</p>
+    </section><!-- #menu1 -->
+
+    <section id="menu4">
+        <p>menu04 content</p>
+    </section><!-- #menu1 -->
+</body>
+</html>

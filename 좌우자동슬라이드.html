@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좌우 자동 슬라이드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            color: #333;
+            line-height: 1;
+        }
+
+        .main_visual {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .main_visual .slide_wrap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .main_visual .slide_wrap .slides {
+            width: calc(100% * 3);
+            height: 100%;
+            display: flex;
+            position: relative;
+            left: 0;
+            transition: left 0.5s;
+        }
+
+        .main_visual .slide_wrap .slides>div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .main_visual .slide_wrap .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main_visual .slide_wrap .slides>div p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #fff;
+            font-size: 50px;
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main_visual .slide_wrap .slides>div::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .4);
+
+        }
+
+        .main_visual .slide_wrap #controller {
+            height: 50px;
+            width: 150px;
+            padding: 0 30px;
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            /* z-index: 9; */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, .7);
+            border-radius: 40px;
+        }
+
+        .main_visual .slide_wrap #controller .arrow {
+            display: flex;
+        }
+
+        .main_visual .slide_wrap #controller .arrow .next {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .main_visual .slide_wrap #controller .arrow .prev {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .main_visual .slide_wrap #controller .pagination {
+            display: flex;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //노드찾기
+            let slides = document.querySelector('.slides'); //슬라이드 전체 감싸는 영역
+            let slidesImg = document.querySelectorAll('.slides > div'); //각 슬라이드 영역
+            let slideCount = slidesImg.length; //슬라이드 개수
+            let slideWidth = 100 + '%'; //한개의 슬라이드 넓이
+            let currentIdx = 0; //현재 슬라이드 위치(시작위치)
+
+            let next = document.querySelector('.next'); //다음버튼
+            let prev = document.querySelector('.prev'); //이전버튼
+
+            let pageNum = document.querySelector('.num');//현재 슬라이드위치
+            let pageTotalNum = document.querySelector('.total');//슬라이드페이지 전체 수
+            pageTotalNum.innerText = slideCount;
+
+            //전체 슬라이드 컨테이너 넓이 설정
+            slides.style.width = slideWidth * slideCount + 'px';
+
+
+            function slideMove() {
+                currentIdx++;
+                slides.style.left = -currentIdx * 100 + '%';
+                //currenIdx = 0 => -0%
+                //currenIdx = 1 => -100%
+                //currenIdx = 2 => -200%
+
+            }//slideMove() 슬라이드페이지 증가, left값 -값만큼 이동
+
+            function paging() {
+                if (currentIdx !== slideCount) {
+                    pageNum.innerText = currentIdx + 1;
+                }//페이징
+            }
+
+
+
+            function slideWrap() {
+                setInterval(() => {
+                    if (currentIdx !== slideCount - 1) {
+                        //0과 같지 않을 때 2와 같지 않을 때
+                        slideMove(currentIdx + 1);
+                        paging();
+                        //eventPageNum.innerText = currentIdx + 1;
+                    } else {
+                        slides.style.left = 0;
+                        currentIdx = 0;
+                        paging();
+                        //eventPageNum.innerText = currentIdx + 1;
+                    }
+                    console.log(currentIdx);
+                    console.log(currentIdx >= slideCount);
+                }, 4000);
+
+            };
+
+
+            slideWrap();
+
+
+        }// end
+    </script>
+</head>
+
+<body>
+    <section class="main_visual">
+        <div class="slide_wrap">
+            <div class="slides">
+                <div>
+                    <img src="img/img1.jpg" alt="" />
+                    <p>메인 슬라이드 1</p>
+                </div>
+                <div>
+                    <img src="img/img2.jpg" alt="" />
+                    <p>메인 슬라이드 2</p>
+                </div>
+                <div>
+                    <img src="img/img3.jpg" alt="" />
+                    <p>메인 슬라이드 3</p>
+                </div>
+            </div><!-- .slides -->
+
+
+            <div id="controller">
+                <ul class="arrow">
+                    <!-- <li class="next">&lang;</li>  
+                    <li class="prev">&rang;</li> -->
+                </ul>
+                <p class="pagination">
+                    <span class="num">1</span> /
+                    <span class="total"></span>
+                </p>
+            </div>
+
+        </div><!-- .slide_wrap end -->
+
+
+    </section><!-- .main_visual end -->
+</body>
+
+</html>

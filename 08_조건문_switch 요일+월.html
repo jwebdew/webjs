@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch 요일, 월</title>
+</head>
+<body>
+    <h3>오늘은 
+        <span id="year"></span>
+        <span id="day"></span>
+        <span id="date"></span>
+    </h3>
+    <script>
+        //날짜 객체 p.421
+        //date객체를 사용하기 위해
+        //new Date();
+
+        let day = new Date();
+        //date객체를 사용하기 위해 선언(필수)
+
+        let week = day.getDay();
+        //메소드 getDay(); => 요일 : 일요일 ~ 토요일
+        //new Date().getDay();
+        let weekDay; 
+        //요일의 한글값을 불러오기 위한 변수명
+
+        let year = day.getFullYear();//년도
+        let month = day.getMonth();//월 1월 ~ 12월
+        let monthDay;
+        //월의 값을 적용하기 위한 변수명
+
+        let toDay = document.getElementById('day');
+
+        let dayDate = day.getDate(); //날짜
+
+
+        console.log(week); 
+        console.log(year);
+        console.log(month);
+
+        switch(week) {
+            case 0 : weekDay = '일요일';break;
+            case 1 : weekDay = '월요일';break;
+            case 2 : weekDay = '화요일';break;
+            case 3 : weekDay = '수요일';break;
+            case 4 : weekDay = '목요일';break;
+            case 5 : weekDay = '금요일';break;
+            case 6 : weekDay = '토요일';break; 
+        }//요일
+
+        switch(month) {
+            case 0 : monthDay = '1월'; break;
+            case 1 : monthDay = '2월'; break;
+            case 2 : monthDay = '3월'; break;
+            case 3 : monthDay = '4월'; break;
+            case 4 : monthDay = '5월'; break;
+            case 5 : monthDay = '6월'; break;
+            case 6 : monthDay = '7월'; break;
+            case 7 : monthDay = '8월'; break;
+            case 8 : monthDay = '9월'; break;
+            case 9 : monthDay = '10월'; break;
+            case 10 : monthDay = '11월'; break;
+            case 11 : monthDay = '12월'; break;
+        }
+
+        toDay.innerHTML = weekDay + '&nbsp;' + year +'년' + monthDay + dayDate + '일';
+        //엔티티코드 &nbsp;(공백)
+    </script>
+</body>
+</html>

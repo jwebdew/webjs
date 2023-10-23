@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 시 헤더 스타일변화</title>
+    <link href="css/제이쿼리_스크롤시헤더변화.css" rel="stylesheet" />
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            //offset().top; => 
+            //화면(브라우저)에서 특정요소(header)의
+            //y축 위치를 알아내고자 할 때 사용
+
+            //scrollTop(); 
+            //=> 스크롤바의 y축 위치를 
+            //알아내고자 할때 사용
+            let headerTop = $('.test header').offset().top;
+            $(window).scroll(function () {
+                let scrollBar = $(window).scrollTop();
+
+                console.log(headerTop);
+                console.log(scrollBar);
+
+                $('h2').text(scrollBar);
+                if (headerTop < scrollBar) {
+                    $('.test header').addClass('on');
+                } else {
+                    $('.test header').removeClass('on');
+                }
+            });
+
+            /* .wrap */
+
+            let hdTop = $('.wrap header').offset().top;
+            $(window).scroll(function () {
+                let wdscrollTop = $(window).scrollTop();
+                if (hdTop < wdscrollTop) {
+                    $('.wrap header').addClass('on');
+                } else {
+                    $('.wrap header').removeClass('on');
+                }
+            });
+
+
+
+
+
+        });//jquery end
+    </script>
+
+</head>
+
+<body>
+    <div class="test">
+        <header>
+            <h1>scroll</h1>
+            <h2>높이값 작성</h2>
+        </header>
+        <section>
+            <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos neque at possimus rerum, ad cupiditate
+                enim explicabo nihil nulla sed, nesciunt ut voluptatum porro praesentium impedit ea fugiat veritatis!
+                Doloremque!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos neque at possimus rerum, ad
+                cupiditate enim explicabo nihil nulla sed, nesciunt ut voluptatum porro praesentium impedit ea fugiat
+                veritatis! Doloremque!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos neque at possimus
+                rerum, ad cupiditate enim explicabo nihil nulla sed, nesciunt ut voluptatum porro praesentium impedit ea
+                fugiat veritatis! Doloremque!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos neque at
+                possimus rerum, ad cupiditate enim explicabo nihil nulla sed, nesciunt ut voluptatum porro praesentium
+                impedit ea fugiat veritatis! Doloremque!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
+                neque at possimus rerum, ad cupiditate enim explicabo nihil nulla sed, nesciunt ut voluptatum porro
+                praesentium impedit ea fugiat veritatis! Doloremque!Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Quos neque at possimus rerum, ad cupiditate enim explicabo nihil nulla sed, nesciunt ut voluptatum
+                porro praesentium impedit ea fugiat veritatis! Doloremque!Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Quos neque at possimus rerum, ad cupiditate enim explicabo nihil nulla sed, nesciunt
+                ut voluptatum porro praesentium impedit ea fugiat veritatis! Doloremque!Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quos neque at possimus rerum, ad cupiditate enim explicabo nihil nulla
+                sed, nesciunt ut voluptatum porro praesentium impedit ea fugiat veritatis! Doloremque!Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Quos neque at possimus rerum, ad cupiditate enim explicabo nihil
+                nulla sed, nesciunt ut voluptatum porro praesentium impedit ea fugiat veritatis! Doloremque!Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Quos neque at possimus rerum, ad cupiditate enim explicabo
+                nihil nulla sed, nesciunt ut voluptatum porro praesentium impedit ea fugiat veritatis! Doloremque!Lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Quos neque at possimus rerum, ad cupiditate enim
+                explicabo nihil nulla sed, nesciunt ut voluptatum porro praesentium impedit ea fugiat veritatis!
+                Doloremque!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos neque at possimus rerum, ad
+                cupiditate enim explicabo nihil nulla sed, nesciunt ut voluptatum porro praesentium impedit ea fugiat
+                veritatis! Doloremque!
+            </div>
+        </section>
+    </div><!-- .test end -->
+
+    <div class="wrap">
+        <header>
+            <div>
+                <h1>
+                    <a href="#">hasujeong</a>
+                </h1>
+                <nav>
+                    <ul>
+                        <li><a href="#">MENU1</a></li>
+                        <li><a href="#">MENU2</a></li>
+                        <li><a href="#">MENU3</a></li>
+                        <li><a href="#">MENU4</a></li>
+                        <li><a href="#">MENU5</a></li>
+                    </ul>
+                </nav>
+                <ul class="right_gnb">
+                    <li><a href="#">login</a></li>
+                    <li><a href="#">search</a></li>
+                </ul><!-- .right_gnb end -->
+            </div>
+        </header>
+        <section class="main_visual">
+            <img src="img/visual2.jpg" alt="" />
+        </section><!-- .main_visual end -->
+        <section class="cont01">
+            <div class="inner">
+                <div>01</div>
+                <div>02</div>
+                <div>03</div>
+                <div>04</div>
+                <div>05</div>
+                <div>06</div>
+            </div><!-- .inner end -->
+        </section><!-- .cont01 end -->
+    </div><!-- .wrap end -->
+</body>
+
+</html>

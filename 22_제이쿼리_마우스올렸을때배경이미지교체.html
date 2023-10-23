@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 올렸을 배경이미지 교체</title>
+    <link href="css/마우스올렸을때배경이미지교체.css" rel="stylesheet">
+
+    <script src="lib/jquery-3.6.0.min.js">
+    </script>
+    <script>
+        $(function () {
+            //eq() 탐색선택자 =>
+            //인텍스 번호에 해당하는 선택자를 찾아서 적용 
+            $('.eq p').eq(0).css({
+                'font-size': '30px',
+                'color': 'red'
+            });
+            $('.eq').hide();
+            //.eq를 숨김
+            ///////////////////////////
+
+            //.cont01
+            //.cont01안에 있는 ul li한테 마우스 올렸을 때
+            //li의 순서에 따라 
+            //.bg안에 있는 div의 배경이미지가 표출
+
+
+            $('.cont01 ul li').mouseenter(function () {
+                $('.bg div').eq($(this).index()).stop().fadeIn(800);
+                //index() : 해당 요소가 몇 번째인지 전달
+                //this => .cont01 ul li중에서 마우스 올린 li
+                console.log($(this).index());
+            });
+
+            //.cont01 ul li한테 마우스 벗어났을 때
+            //.bg div를 서서히 없어지게 실행fadeOut()
+            $('.cont01 ul li').mouseleave(function () {
+                $('.bg div').stop().fadeOut();
+            });
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <div class="eq">
+        <p>내용1</p>
+        <p>내용2</p>
+        <p>내용3</p>
+        <p>내용4</p>
+    </div><!-- .eq end -->
+
+    <section class="cont01">
+        <div class="inner">
+            <div>
+                <p>#쇼핑몰 / 웹디자인제작</p>
+                <h4>웹디자인 제목 작성</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, ut! Eos, aliquam aperiam. Non
+                    commodi ad esse a quos, illum aut voluptatibus tempore libero nemo praesentium itaque, minima,
+                    magnam architecto.</p>
+                <ul>
+                    <li><a href="#">웹사이트</a></li>
+                    <li><a href="#">기획서</a></li>
+                </ul>
+            </div>
+        </div><!-- .inner -->
+
+        <!-- 버튼에 마우스 올렸을 때
+        교체될 이미지 -->
+        <div class="bg">
+            <div class="bg01"></div>
+            <div class="bg02"></div>
+        </div><!-- .bg end -->
+
+    </section><!-- .cont01 end -->
+</body>
+
+</html>

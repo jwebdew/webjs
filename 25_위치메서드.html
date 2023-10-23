@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위치메서드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box_wrap {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .box_wrap>p {
+            width: 50px;
+            height: 50px;
+            background-color: #accee3;
+            top: 50px;
+            left: 100px;
+            position: absolute;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            /* 위치메서드 offset, position */
+            /* offset(): 브라우저를 기준으로 y축, x축 좌표값을 불러옴 */
+            /* offset().top; offset().left */
+
+            /* position() : 포지션이 기준으로 y축, x축 떨어진 좌표값을 불러옴*/
+            /* position().top;
+            position().left;
+            */
+
+
+            let offTop = $('.box_wrap >p').offset().top;
+            let posTop = $('.box_wrap >p').position().top;
+
+            $('.txt1 strong').text(offTop);
+            $('.txt2 strong').text(posTop);
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <div class="box_wrap">
+        <p>box</p>
+    </div><!-- .box_wrap end -->
+    <p class="txt1">
+        offsetTop위치값 :<strong></strong>
+    </p>
+    <p class="txt2">
+        position위치값 :<strong></strong>
+    </p>
+</body>
+
+</html>

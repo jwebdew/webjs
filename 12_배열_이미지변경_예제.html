@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 배경색 변경</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            line-height: 1;
+            color: #333;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .cont01 {
+            height: 100vh;
+            background-color: #f0ffff;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .cont01>div {
+            max-width: 1280px;
+            width: 95%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cont01>div figure {
+            width: 50%;
+            height: 70vh;
+        }
+
+        .cont01>div figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cont01>div .info {
+            width: 50%;
+            padding-left: 20px;
+            word-break: keep-all;
+        }
+
+        .cont01>div .info strong {}
+
+        .cont01>div .info h4 {
+            font-size: 25px;
+            margin: 5px 0 20px;
+        }
+
+        .cont01>div .info p:nth-of-type(1) {
+            font-weight: bold;
+
+            padding-bottom: 10px;
+        }
+
+        .cont01>div .info ul {
+            display: flex;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .cont01>div .info ul li:nth-child(1) {
+            width: 20%;
+            font-weight: bold;
+        }
+
+        .cont01>div .info ul li:nth-child(2) {
+            width: 80%;
+        }
+
+        .cont01>div .info ul li {}
+
+        .cont01>div .info #btn {
+            height: 40px;
+            border: 0;
+            padding: 0 30px;
+            background-color: royalblue;
+            border-radius: 5px;
+            color: #fff;
+            margin-top: 50px;
+
+        }
+
+        .cont01>div .info #num_text {}
+
+        @media screen and (max-width:1024px) {
+            .cont01 {
+                height: auto;
+                padding: 50px 0;
+            }
+
+            .cont01>div {
+                display: block;
+            }
+
+            .cont01>div figure {
+                width: 100%;
+                height: 40vh;
+            }
+
+            .cont01>div .info {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .cont01>div .info #btn {
+                margin-top: 30px;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //배열 p.375
+            //: 여러개의 데이터 값을 저장할 수 있는 공간 
+
+
+            let img1 = 'img/img1.jpg';
+            let img2 = 'img/img2.jpg';
+            let img3 = 'img/img3.jpg';
+
+            let imgList = [img1, img2, img3];
+            let numList = [1, 2, 3, 4];
+
+            let btnImgChange = document.getElementById('btn');
+            let sectionImg = document.getElementById('bg_img');
+            let numText = document.getElementById('num_text');
+
+            let i = 0;
+            let num = 1;
+
+            btnImgChange.onclick = function () {
+                console.log(i)
+                i++;
+                num++;
+                if (i >= imgList.length) {
+                    i = 0;
+                    num = 1;
+                }
+                sectionImg.src = imgList[i];
+
+                //sectionImg.src =  'img/img' + numList[i] + '.jpg'; 
+                //이것을 사용할 경우 조건문 imgList대신 numList로 변경
+
+                numText.innerText = numList[i];
+                //innerText 속성
+
+            }
+        }//window.onload
+    </script>
+</head>
+
+<body>
+
+
+    <section class="cont01">
+        <div>
+            <figure>
+                <img id="bg_img" src="img/img1.jpg" alt="" />
+            </figure>
+            <div class="info">
+                <strong>2022.09.26 월요일</strong>
+                <h4>💖부산여행💖</h4>
+
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque, ratione delectus. Aliquam delectus
+                    nulla itaque laboriosam iusto maiores mollitia nam quo reiciendis corporis sit sapiente sed, ipsa
+                    ducimus, eaque blanditiis!</p>
+                <button type="button" id="btn">이미지보기 <span id="num_text">1</span>/3</button>
+
+            </div>
+        </div>
+
+
+    </section>
+</body>
+
+
+</html>

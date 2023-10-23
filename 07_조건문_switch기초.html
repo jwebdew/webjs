@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch ~ case문</title>
+</head>
+<body>
+    <script>
+        //switch문 조건문 : p.351
+        //case '변수값' => 상수 : 숫자, 문자만 올 수 있음
+        //case에 변수, 조건식 등은 사용 불가능
+        let drink = prompt('가격 조회를 원하는 음료수를 입력하세요.(콜라, 사이다, 커피 중 택1)', '');
+        switch(drink) {
+            case '콜라' : document.write('800원');break;
+            case '사이다' : document.write('900원');break;
+            case '커피' : document.write('1000');break;
+            default : document.write('다시 입력해주세요');
+        }
+
+
+        // if(drink == '콜라') {
+        //     document.write('800원');
+        // } else if(drink == '사이다') {
+        //     document.write('900원');
+        // } else if(drink == '커피') {
+        //     document.write('1000원');
+        // } else {
+        //     document.write('다시 입력해주세요');
+        // }
+    </script>
+</body>
+</html>

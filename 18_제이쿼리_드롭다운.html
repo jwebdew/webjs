@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드롭다운</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            line-height: 1;
+            color: #333;
+        }
+
+        nav ul .depth01 {
+            vertical-align: top;
+            display: inline-block;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            background-color: palegoldenrod;
+            text-align: center;
+        }
+
+        nav ul .depth02 {
+            background-color: aliceblue;
+            display: none;
+
+        }
+
+        nav ul .depth01:hover {
+            background-color: teal;
+        }
+
+        nav ul .depth01:hover>a {
+            color: #fff;
+        }
+
+        nav ul .depth02 li:hover {
+            background-color: rgb(198, 202, 205);
+            color: #333;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            //1차메뉴한테 마우스 올렸을 때
+            //2차메뉴가 슬라이드 다운
+            //mouseenter() : 마우스 올렸을 때
+            //slideDown() : 슬라이드 다운
+            $('.depth01').mouseenter(function () {
+                //$('.depth02').slideDown();
+                $(this).children('.depth02').slideDown();
+
+            });
+            $('.depth01').mouseleave(function () {
+                $('.depth02').slideUp();
+            });
+        });//jquery end
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- Single -->
+            <ul>
+                <li class="depth01">
+                    <a href="#">menu01</a>
+                    <ul class="depth02">
+                        <li><a href="#">01-01</a></li>
+                        <li><a href="#">01-02</a></li>
+                        <li><a href="#">01-03</a></li>
+                        <li><a href="#">01-04</a></li>
+                    </ul><!-- .depth02 -->
+                </li><!-- .depth01 end -->
+
+                <li class="depth01">
+                    <a href="#">menu02</a>
+                    <ul class="depth02">
+                        <li><a href="#">02-01</a></li>
+                        <li><a href="#">02-02</a></li>
+                        <li><a href="#">02-03</a></li>
+                        <li><a href="#">02-04</a></li>
+                    </ul><!-- .depth02 -->
+                </li><!-- .depth01 end -->
+
+                <li class="depth01">
+                    <a href="#">menu03</a>
+                    <ul class="depth02">
+                        <li><a href="#">03-01</a></li>
+                        <li><a href="#">03-02</a></li>
+                        <li><a href="#">03-03</a></li>
+                        <li><a href="#">03-04</a></li>
+                    </ul><!-- .depth02 -->
+                </li><!-- .depth01 end -->
+
+                <li class="depth01">
+                    <a href="#">menu04</a>
+                    <ul class="depth02">
+                        <li><a href="#">04-01</a></li>
+                        <li><a href="#">04-02</a></li>
+                        <li><a href="#">04-03</a></li>
+                        <li><a href="#">04-04</a></li>
+                    </ul><!-- .depth02 -->
+                </li><!-- .depth01 end -->
+            </ul>
+        </nav>
+    </header>
+</body>
+
+</html>

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행이지 탭메뉴</title>
+    <style>
+        /* 강원교육튼튼체 */
+        @font-face {
+            font-family: 'GangwonEduPowerExtraBoldA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /*  font-family: 'Noto Sans KR', sans-serif; */
+        @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+        .notosanskr * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            color: #333;
+            line-height: 1;
+            font-family: 'Noto Sans KR';
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        .theme_tour {
+            padding: 100px 0;
+            /* background: url('img/thema_bg1.jpg') center center / cover no-repeat; */
+
+        }
+
+        .theme_tour img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .theme_tour .inner {
+            max-width: 1440px;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .theme_tour .inner h3 {
+            font-family: 'GangwonEduPowerExtraBoldA';
+            font-size: 60px;
+            letter-spacing: -2.5px;
+            text-align: center;
+        }
+
+        .theme_tour .inner .tab_menu {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .theme_tour .inner .tab_menu li {
+            font-size: 45px;
+            margin: 50px 10px 0;
+            font-weight: 700;
+            letter-spacing: -2.5px;
+            color: #e5e5e5;
+            cursor: pointer;
+            position: relative;
+
+        }
+
+        .theme_tour .inner .tab_menu li.on::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+
+        }
+
+        .theme_tour .inner .tab_menu li::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+        }
+
+        .theme_tour .inner .tab_menu li:nth-child(1).on::before {
+            background-color: #ff9102;
+        }
+
+        .theme_tour .inner .tab_menu li:nth-child(2).on::before {
+            background-color: #d9ff00;
+        }
+
+        .theme_tour .inner .tab_menu li:nth-child(3).on::before {
+            background-color: #ff0022;
+        }
+
+        .theme_tour .inner .tab_menu li.on {
+            color: #555;
+        }
+
+        .theme_tour .inner .tabs {
+            margin-top: 50px;
+        }
+
+        .theme_tour .inner .tabs .tab_cont {
+            display: flex;
+            justify-content: space-between;
+            display: none;
+        }
+
+        .theme_tour .inner .tabs .tab_cont.on {
+            display: flex;
+        }
+
+        .theme_tour .inner .tabs .tab_cont .theme_list {
+            width: 23%;
+        }
+
+        .theme_tour .inner .tabs .tab_cont .theme_list figure {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .theme_tour .inner .tabs .tab_cont .theme_list>div {
+            margin-top: 20px;
+        }
+
+        .theme_tour .inner .tabs .tab_cont .theme_list>div h4 {
+            font-size: 20px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+
+            /* 특정 단위로 텍스트를 자르기 위한 구문 */
+            white-space: normal;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            /* 텍스트를 자를 때 원하는 단위 ex) 3줄 */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .theme_tour .inner .tabs .tab_cont .theme_list>div p {
+            line-height: 1.4;
+            /* 특정 단위로 텍스트를 자르기 위한 구문 */
+            /* white-space: normal; */
+            /* box 관련 태그 모두 vendor prefix를 사용
+            Firefox
+            display:-moz-box;
+            Safari, Chrome, and Opera
+            display:-webkit-box;
+            */
+            display: -webkit-box;
+
+            -webkit-line-clamp: 2;
+            /* 텍스트를 자를 때 원하는 단위 ex) 3줄 */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 20px;
+            text-overflow: ellipsis;
+        }
+
+        .theme_tour .inner .tabs .tab_cont .theme_list>div strong {
+            font-size: 20px;
+            font-family: 'GangwonEduPowerExtraBoldA';
+            letter-spacing: 0;
+        }
+
+        /* magazine */
+        .magazine {
+            margin: 100px 0;
+            background: url('img/visual1.jpg') center center / cover no-repeat;
+            height: 80vh;
+            position: relative;
+        }
+
+
+        .magazine .inner {
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            z-index: 9;
+
+
+        }
+
+        .magazine .inner .title {
+            width: 25%;
+            height: 100%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* padding: 50px; */
+            border-right: 1px solid #fff;
+            padding: 50px;
+            background-color: rgba(0, 0, 0, .7);
+        }
+
+        .magazine .inner .title p {
+            line-height: 1.4;
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+
+        .magazine .inner .vol_list {
+            height: 100%;
+            width: 75%;
+            display: flex;
+        }
+
+        .magazine .inner .vol_list>div {
+            height: 100%;
+            width: calc(100% / 3);
+            padding: 50px;
+            border-right: 1px solid #fff;
+
+            color: #fff;
+            position: relative;
+            z-index: 9;
+            background-color: rgba(0, 0, 0, .7);
+        }
+
+        .magazine .inner .vol_list>div:hover {
+            background-color: transparent;
+        }
+
+        .magazine .inner .vol_list>div a {
+            height: 100%;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .magazine .inner .vol_list>div:hover a {
+            transform: translateY(-50px);
+        }
+
+        .magazine .inner>div h3,
+        .magazine .inner>div h4 {
+            font-family: 'GangwonEduPowerExtraBoldA';
+            font-size: 60px;
+
+        }
+
+        .magazine .inner>div h4 {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .magazine .inner>div p {
+            font-size: 18px;
+        }
+
+        .magazine .magazine_bg>div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+
+            /* transition: opacity 0.5s 0.1s; */
+
+        }
+
+        .magazine .magazine_bg>div.on {
+            /* z-index: -1; */
+            /* display: block; */
+
+
+        }
+
+        .magazine .bg1 {
+            background: url('img/20220929175407419lebunpoteiasaaj.jpg') center center / cover no-repeat;
+
+        }
+
+        .magazine .bg2 {
+            background: url('img/20220929175728610svxlsxntqcghlaa.jpg') center center / cover no-repeat;
+
+        }
+
+        .magazine .bg3 {
+            background: url('img/20221020160204231qnbozogekysapwm.jpg') center center / cover no-repeat;
+
+        }
+
+
+
+        /* info */
+        .info {}
+
+        .info .inner {
+            max-width: 1440px;
+            width: 95%;
+            margin: 100px auto;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .info .inner .cont {}
+
+        .info .inner .tit {
+            font-size: 45px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 40px;
+        }
+
+        .info .inner>div {
+            width: 45%;
+        }
+
+        .info .notice {}
+
+        .info .notice dl {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 25px 0;
+        }
+
+        .info .notice dl dt {}
+
+        .info .notice dl dt dd {}
+
+        .info .help .cont {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .info .help .cont a {
+            display: block;
+
+        }
+
+        .info .help .cont .number {
+            font-size: 18px;
+            font-weight: 700;
+            padding: 25px 0;
+        }
+
+        .info .help .cont .phone {
+            font-size: 40px;
+            font-family: 'GangwonEduPowerExtraBoldA';
+            display: block;
+            margin: 10px 0;
+        }
+
+        .info .help .cont .txt {
+            line-height: 1.8;
+        }
+
+        .info .help .cont>div:nth-child(2) a {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 20px;
+            /* display: flex;
+            justify-content: space-between;  */
+            position: relative;
+            padding-right: 50px;
+        }
+
+        .info .help .cont>div:nth-child(2) a::after {
+            content: '→';
+            font-size: 25px;
+            margin-left: 30px;
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-60%);
+
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            // let section = $('.theme_tour');
+            // let point = $('.tab_menu li.on');
+            // let tabMenu = $('.tab_menu li');
+            // let tabs = $('.tab_menu li.on::before').css('background-color', '#ffffff');
+            //let tabColor = ['#ff0022', '#ff9102', 'd9ff00', '#ffcc00'];
+
+
+
+
+
+            // i++
+            // if(i == tabColor.length) {
+            //     i = 0;
+            // }
+            // $(this).eq(i).addClass('on').css('background-color', tabColor[i] );
+            // console.log(tabMenu.length)
+            // for (let i = 0; i < tabMenu.length; i++) {
+            //     let num = i + 1;
+            //     let imgChange =  this.css('background', 'url(img/thema_bg' + num + '.jpg)');
+
+
+
+
+            // } //for 
+
+            let i = 0;
+            let numberTab = $(this).index();
+            let sectionNum = $('.tab_menu li');
+            let sectionColor = ['#ff0022', '#ff9102', 'd9ff00', '#ffcc00'];
+            //let sectionBg = sectionColor[i]
+            $('.tab_menu li').click(function () {
+                // i++;
+                // console.log(sectionNum.length)
+                // if(i <= sectionNum.length) {
+
+                //     $('.theme_tour').css('background-color', sectionBg);
+                //     i = 0;
+                // } else{
+                //     $('.theme_tour').css('background-color', '#ffffff');
+                // }
+                // console.log(i)
+
+
+
+                //hasClass()
+                $('.tab_menu li').removeClass('on');
+                $(this).addClass('on');
+                //$('.tab_menu li').hasClass('on').css({'background-color' : pointColorList[i]});
+
+                $('.tab_cont').css('display', 'none');
+                $('.tab_cont').eq($(this).index()).css('display', 'flex')
+
+
+
+
+            });
+
+
+            //매거진 컨텐츠 호버 시 배경이미지 변경 엘리먼트에 따라 클래스명 제어
+            //첫번째 div를 제외한 div한테 마우스 올렸을  때
+            $('.vol_list > div').mouseenter(function () {
+
+                $('.magazine_bg div').hide();
+                $('.magazine_bg div').eq($(this).index()).show();
+
+                console.log($(this).index())
+            });
+            $('.vol_list > div').mouseleave(function () {
+                $('.magazine_bg > div').hide();
+            });
+
+
+
+            //스크립트를 이용하여 이미지 교체
+            // $('.magazine .inner > div').mouseenter(function () {
+
+            //         let num = $(this).index() + 1;
+
+            //         $('.magazine').css({
+            //             'background': 'url(img/thema_bg' + num + '.jpg) center center / cover no-repeat',
+            //             'transition' : 'background 0.7s'
+            //         });
+
+            // });
+
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <section class="theme_tour">
+        <div class="inner">
+            <h3>테마가 있는 여행이지</h3>
+            <ul class="tab_menu">
+                <li class="on">#황금연휴</li>
+                <li>#한나라일주</li>
+                <li>#허니문</li>
+                <li>#골프</li>
+            </ul><!-- .tab_menu end -->
+            <div class="tabs">
+                <div class="tab_cont on">
+                    <div class="theme_list">
+                        <figure>
+                            <img src="img/nature4.jpg" alt="" />
+                        </figure>
+                        <div>
+                            <h4>[황금연휴]최다판매 특급 디바리 오션뷰 UP 방콕/파타야 5일</h4>
+                            <p>오션뷰 룸 업그레이드+마사지 2시간 UP+수박쥬스 1인1잔 & 맥주 1인1캔 제공</p>
+                            <strong>579,000원~</strong>
+                        </div>
+                    </div><!-- theme_list end 1 -->
+                    <div class="theme_list">
+                        <figure>
+                            <img src="img/travel04.jpg" alt="" />
+                        </figure>
+                        <div>
+                            <h4>[황금연휴][방콕&파타야] 돌핀쇼+야시장+베이욕스카이뷔페 특급 5일</h4>
+                            <p>수족관에서의 훌륭한 돌고래 쇼와 베이욕 스카이 호텔에서 즐기는 뷔페 식사가 포함된 패키지</p>
+                            <strong>559,000원~</strong>
+                        </div>
+                    </div><!-- theme_list end 1 -->
+                    <div class="theme_list">
+                        <figure>
+                            <img src="img/travel02.jpg" alt="" />
+                        </figure>
+                        <div>
+                            <h4>[황금연휴]최다판매 특급 디바리 오션뷰 UP 방콕/파타야 5일</h4>
+                            <p>■ 성인 2명 이상 출발 보장!
+                                ■ 럭셔리 요트 투어 + 바나나비치 해변휴양, 스노클링, 줄낚시 체험
+                                ■ 온전한 힐링 휴양! 2일차 리조트 자유일정 (리조트 조/중/석식 포함) + 타이마사지 2시간 체험
+                                ■ 푸켓 현지 맛집! 깐엥피어 레스토랑에서 로맨틱 씨푸드 제공</p>
+                            <strong>1,399,000원~</strong>
+                        </div>
+                    </div><!-- theme_list end 1 -->
+                    <div class="theme_list">
+                        <figure>
+                            <img src="img/travel03.jpg" alt="" />
+                        </figure>
+                        <div>
+                            <h4>[황금연휴] #다낭 #5성급 빈펄리버프론트 #바나산 테마파크 #골든브릿지 4/5/6/일</h4>
+                            <p>월드체인 빈펄 5성급 빈펄 리버프론트 숙박+바나산테마파크+호이안구시가지 관광투어</p>
+                            <strong>649,000원~</strong>
+                        </div>
+                    </div><!-- theme_list end 1 -->
+                </div><!-- tab_cont 황금연휴 -->
+
+                <div class="tab_cont">
+                    <div class="theme_list">
+                        <figure>
+                            <img src="img/visual2.jpg" alt="" />
+                        </figure>
+                        <div>
+                            <h4>[유럽이보인다] 이탈리아일주 8/9일 [전4성숙박+아울렛/발도르차/아시시/시에나/나폼쏘]+시르미에오네/가르다호수(9일일정시)</h4>
+                            <p>한국인이 가장 많이 찾는 유럽국가 3년 연속 1위(위디피아 2017년 기준), 세계 문화유산을 가장 많이 보유한 나라(49개)로 유럽 문화 본고장, 드넓은
+                                평야, 거장들이 숨쉬는 예술작품들, 중세의 풍경, 오랜 이야기가 살아 숨쉬는 이탈리아를 여행합니다. 에미레이트 항공 또는 루프트 한자 항공 탑승 !</p>
+                            <strong>1,799,000원~</strong>
+                        </div>
+                    </div><!-- theme_list end 1 -->
+                </div><!-- tab_cont 한나라일주 -->
+
+                <div class="tab_cont">
+                    <div class="theme_list">
+                        <figure>
+                            <img src="img/wedding.jpg" alt="" />
+                        </figure>
+                        <div>
+                            <h4>[더 특별한 허니문] 하와이 쉐라톤와이키키 7일 #룸업그레이드</h4>
+                            <p>오래전부터 인기가 많은 곳으로 하와이를 대표하는 리조트입니다. 근처에 각종 맛집과 로열하와이안 센터가 위치해 접근성이 매우 좋습니다.</p>
+                            <strong>3,940,000원~</strong>
+                        </div>
+                    </div><!-- theme_list end 1 -->
+                </div><!-- tab_cont 허니문 -->
+
+                <div class="tab_cont">
+                    <div class="theme_list">
+                        <figure>
+                            <img src="img/golf.jpg" alt="" />
+                        </figure>
+                        <div>
+                            <h4>[클락 GOLF] 퀘스트+미모사/루이시따/베버리/FA코리아 5/6일</h4>
+                            <p>클락 퀘스트호텔 숙박 + 미모사/루이시따/베버리/FA코리아 라운드</p>
+                            <strong>499,000원~</strong>
+                        </div>
+                    </div><!-- theme_list end 1 -->
+                </div><!-- tab_cont 골프 -->
+
+
+            </div><!-- .tab_cont end -->
+        </div><!-- .inner end -->
+    </section><!-- theme_tour end -->
+
+    <section class="magazine">
+        <div class="inner">
+            <div class="title">
+                <h3>Magazine</h3>
+                <p>어디로 떠날지 고민하는 여행자에게<br />유용한 여정 정보를 소개합니다.</p>
+                <a href="#">더보기</a>
+            </div><!-- title end -->
+            <div class="vol_list">
+                <div>
+                    <a href="#">
+                        <h4>#VOL.4</h4>
+                        <p>'금문고량주’로 알아보는 대만의 술 역사</p>
+                    </a>
+                </div><!-- vol end -->
+                <div>
+                    <a href="#">
+                        <h4>#VOL.3</h4>
+                        <p>하와이에 있는 동상, '킹카메하메하'는 대체 누구? </p>
+                    </a>
+                </div><!-- vol end -->
+                <div>
+                    <a href="#">
+                        <h4>#VOL.2</h4>
+                        <p>낮과 밤의 다른 매력, 베트남 호이안</p>
+                    </a>
+                </div><!-- vol end -->
+            </div><!-- .magazine_list end -->
+
+        </div><!-- .inner end -->
+
+        <div class="magazine_bg">
+            <div class="bg1"></div>
+            <div class="bg2"></div>
+            <div class="bg3"></div>
+        </div>
+
+    </section><!-- .magazine end -->
+
+
+    <section class="info">
+        <div class="inner">
+            <div class="notice">
+                <p class="tit">알려드립니다.</p>
+                <div class="cont">
+                    <dl>
+                        <dt>[당첨자 발표] 조승우 MZ PICK 이벤트 당첨자 발표</dt>
+                        <dd>2022-10-06</dd>
+                    </dl>
+                    <dl>
+                        <dt>[공지] 태국 대마 관련 주의사항</dt>
+                        <dd>2022-10-04</dd>
+                    </dl>
+                    <dl>
+                        <dt>[공지] 고객 참여 게시판 시상 확대 적용</dt>
+                        <dd>2022-09-13</dd>
+                    </dl>
+                </div><!-- cont end -->
+            </div><!-- .notice end -->
+
+            <div class="help">
+                <p class="tit">도와드릴까요?</p>
+                <div class="cont">
+                    <div>
+                        <p class="number">여행이지 대표번호</p>
+                        <a href="#" class="phone">1588-0040</a>
+                        <p class="txt">부산지사 대표번호 051-469-9415</p>
+                        <p class="txt">평일 09시-18시(토/일요일 및 공휴일 휴무)</p>
+                    </div>
+                    <div>
+                        <a href="#">문의별 번호 안내</a>
+                        <a href="#">1:1문의하기</a>
+                    </div>
+
+                </div><!-- cont -->
+            </div><!-- .help end -->
+        </div><!-- .inner end -->
+    </section><!-- .info end -->
+</body>
+
+</html>

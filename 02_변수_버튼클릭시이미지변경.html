@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지변경</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            width: 500px;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="img/beach1.jpg" alt="해변파라솔" />
+        <button id="btn" onclick="changeImg()">이미지 변경하기</button>
+    </div>
+    <script>
+        let btn = document.getElementById('btn');
+        let img1 = document.getElementsByTagName('img')[0];
+        btn.onclick = function () {
+            //버튼 태그를 클릭했을 때
+            //이미지 태그를 찾아서
+            //이미지 변경
+            img1.src = "img/beach2.jpg";
+        }//changeImg()
+    </script>
+</body>
+
+</html>

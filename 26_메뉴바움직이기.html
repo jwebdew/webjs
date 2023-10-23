@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tab_menu {
+            width: 500px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            margin: 50px auto;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+
+        .tab_menu ul {
+            display: flex;
+        }
+
+        .tab_menu ul li {
+            width: calc(100% / 5);
+        }
+
+        .bar {
+            width: calc(100% / 5);
+            height: 5px;
+            background-color: palevioletred;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('.tab_menu li').mouseenter(function () {
+                let moveLeft = $(this).position().left;
+                console.log(moveLeft);
+                $('.bar').stop().animate({
+                    'left': moveLeft, 
+                });
+                $('.bar').text(moveLeft);
+            });
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <div class="tab_menu">
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+        </ul>
+        <div class="bar"></div>
+    </div><!-- .tab_menu end -->
+</body>
+
+</html>

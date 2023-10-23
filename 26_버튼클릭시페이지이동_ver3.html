@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        body {
+            color: #333;
+            line-height: 1;
+        }
+
+        body,
+        html {
+            transition: 1s;
+            overflow: hidden;
+        }
+
+        .menu {
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 99;
+        }
+
+        .menu li {
+            margin: 10px 0;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .menu li a {
+            display: block;
+            position: relative;
+            padding: 10px;
+        }
+
+        .menu li a::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: #333;
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            transform: translateY(-50%);
+        }
+
+        .menu li a.on::before {
+            background-color: #fff;
+        }
+
+        .menu li a.on {
+            background-color: #fff;
+            color: #333;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        .menu li:first-child::before {}
+
+        section {
+            height: 100vh;
+            text-align: center;
+            font-size: 50px;
+            padding-top: 150px;
+
+
+        }
+
+        section:nth-of-type(1) {
+            background-color: #F6F6C9;
+        }
+
+        section:nth-of-type(2) {
+            background-color: #BAD1C2;
+        }
+
+        section:nth-of-type(3) {
+            background-color: #4FA095;
+            color: #fff;
+        }
+
+        section:nth-of-type(4) {
+            background-color: #153462;
+            color: #fff;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <!-- <script src="lib/jquery-ui.min.js"></script> -->
+    <script>
+        $(function () {
+            /* 검색 : 이징효과  */
+            $('.menu a').click(function (e) {
+                e.preventDefault(); //a링크 방지 
+
+
+            });
+
+            $('.menu li').click(function (e) {
+                $('#mainvisual h3').text($('#mainvisual').offset().top);
+                $('#about h3').text($('#about').offset().top);
+
+
+                let idx = $(this).index();
+                let page = $('section').eq($(this).index());
+                let pageTop = page.offset().top;
+
+
+                $('.menu a').removeClass('on');
+                $(this).children().addClass('on');
+
+                //$(window).scrollTop(pageTop);
+                $('body, html').animate({
+                    scrollTop: pageTop
+
+                }, 1000,easeOutBounce);
+            });
+
+
+
+        })//jquery end
+    </script>
+</head>
+
+<body>
+    <ul class="menu">
+        <li><a class="on" href="#mainvisual">홈</a></li>
+        <li><a href="#about">나의소개</a></li>
+        <li><a href="#portfolio">포트폴리오</a></li>
+        <li><a href="#resume">증명서</a></li>
+    </ul><!-- .menu end -->
+
+
+
+    <section id="mainvisual" class="cont01">
+        <h3>메인페이지</h3>
+    </section><!-- cont01 end -->
+
+    <section id="about" class="cont02">
+        <h3>나의소개</h3>
+    </section><!-- cont01 end -->
+
+    <section id="portfolio" class="cont03">
+        <h3>포트폴리오</h3>
+    </section><!-- cont01 end -->
+
+    <section id="resume" class="sec cont04">
+        <h3>증명서</h3>
+    </section><!-- cont01 end -->
+
+</body>
+
+</html>

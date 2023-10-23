@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문 썸네일 이미지 '루시아홀딩스'</title>
+    <style>
+        /* noto snas 
+        font-family: 'Noto Sans KR', sans-serif; */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {list-style: none;}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        body {
+            color: #333;
+            line-height: 1;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+        }
+        
+        .business {
+            background-image: url('img/main_business_bg_1.jpg');
+            height: 100vh;
+            position: relative;
+        }
+        .business .business_list {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            max-width: 1440px;
+            width: 95%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 9; 
+        }
+        .business::before {
+            content: '';
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8); 
+        }
+        .business .business_list .title {
+            text-align: right;
+            color: #fff;
+        }
+        .business .business_list .title p {
+            color: #a77b4a;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .business .business_list .title h3 {
+            font-size: 60px;
+            margin: 20px 0 60px;
+        }
+        .business .business_list > ul {
+            width: 40%;
+            display: flex;
+            flex-wrap: wrap;
+            /* justify-content: center;
+            align-items: center; */
+        }
+        .business .business_list > ul > li {
+            width: calc(100% / 3);
+            height: 200px;
+        }
+        .business .business_list > ul > li > a, 
+        .business .business_list > ul > li > div {
+            height: 100%;
+            background-color: #5b6167;
+            text-align: center;
+            border: 1px solid #4b4b4b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        } 
+        .business .business_list > ul > li.on {
+            box-shadow: 15px 15px 29px rgb(0 0 0 / 30%);
+            position: relative;
+            z-index: 9;
+        }
+        .business .business_list > ul > li:hover a {
+            background-color: #a77b4a;   
+        }
+        .business .business_list > ul > li a.on {
+            background-color: #a77b4a;
+            
+        }
+        .business .business_list > ul > li p {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+          
+            let business = document.querySelector('.business');
+            let items = document.querySelectorAll('.item_list a'); 
+          
+            //반복문 : 동일한 명령을 여러번 처리를 하거나
+            //특정 연산을 반복적으로 처리p.345 / p.353
+            //for문 (초기값; 조건식; 증감값) {
+            //    실행문;
+            //}  
+            
+             
+            for (let i = 0; i < items.length; i++) {
+                
+                //businessBg.style.backgroundImage = 'img/main_business_bg_1.jpg';
+                let bgNum = i + 1;
+                items[i].addEventListener('mouseenter', function() {
+                    console.log( 'img/main_business_bg_' + i + 1 + '.jpg')
+                    business.style.backgroundImage = 'url(img/main_business_bg_' + bgNum + '.jpg)';
+                    
+                });
+            }
+             
+
+        }//window.onload
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+
+        </div><!-- .inner end -->
+    </header>
+    <section class="business">
+        <div class="business_list">
+            <div class="title">
+                <p>BUSINESS AREA</p>
+                <h3>사업분야</h3>
+            </div><!-- .title end -->
+            <ul class="item_list">
+                <li>
+                    <a href="#">
+                        <img src="img/main_business_icon_develope.png" alt="개발사업" />
+                        <p>개발사업</p> 
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="#">
+                        <img src="img/main_business_icon_city.png" alt="도시정비사업" />
+                        <p>도시정비사업</p> 
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="#">
+                        <img src="img/main_business_icon_project.png" alt="프로젝트컨설팅" />
+                        <p>프로젝트컨설팅</p> 
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="#">
+                        <img src="img/main_business_icon_lifestyle.png" alt="라이프스타일" />
+                        <p>라이프스타일</p> 
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="#">
+                        <img src="img/main_business_icon_new_business.png" alt="라이프스타일" />
+                        <p>신사업</p> 
+                    </a>
+                </li>
+                <li>
+                    <div>
+                        <img src="img/main_business_logo.png" alt="루시아" />
+                    </div>
+                </li>
+            </ul>
+        </div><!-- inner end -->
+        
+    </section><!-- business end -->
+</body>
+
+</html>

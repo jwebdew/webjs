@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>풀페이지</title>
+    <link href="lib/fullPage.js-master/dist/fullpage.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            line-height: 1;
+            color: #333;
+        }
+
+        .section {
+            text-align: center;
+        }
+
+        #section1 {
+            background-color: #ffed28;
+        }
+
+        #section2 {
+            background-color: palevioletred;
+            color: #fff;
+        }
+
+        #section3 {
+            background-color: tomato;
+            color: #fff;
+        }
+
+        /* 우측 내비게이션 스타일  */
+        #fp-nav ul li a span,
+        .fp-slidesNav ul li a span {
+            background: #d8ff8a;
+        }
+
+        #fp-nav ul li .fp-tooltip {
+            color: #d8ff8a;
+        }
+
+        .fp-arrow.fp-prev,
+        .fp-arrow.fp-next {
+            border-width: 0;
+            border-color: transparent;
+        }
+
+        .fp-arrow.fp-prev::before {
+            font-family: 'xeicon';
+            content: "\e906";
+            font-size: 50px;
+        }
+
+        .fp-arrow.fp-next::before {
+            font-family: 'xeicon';
+            font-size: 50px;
+            content: "\e907";
+        }
+
+        .fp-next {
+            right: 90px;
+        }
+
+        #section2 {
+            background: url('img/nature4.jpg') center center / cover no-repeat;
+        }
+
+        header {
+            height: 100px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.575);
+            z-index: 9;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            font-size: 40px;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+
+    <!-- fullpage.js script 연결 -->
+    <script src="lib/fullPage.js-master/dist/fullpage.min.js"></script>
+    <script>
+        $(function () {
+            var myFullpage = new fullpage('#fullpage', {
+                //sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'orange', '#ccddff'],
+                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage', 'more0', 'more1', 'more2', 'more3', 'more4'],
+                slidesNavigation: true,
+                navigation: true,
+                navigationTooltips: ['페이지1', '페이지2', '페이지3'],
+                //showActiveTooltip: true,
+                menu: '#menu',
+                //scrollBar: true
+            });
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <!-- fullpage.js -->
+    <!-- fullPage.js container -->
+    <header>
+        header
+    </header>
+    <div id="fullpage">
+        <div class="section hidden" id="section1">
+            <div class="slide">
+                <h1>Section 1.1</h1>
+            </div>
+            <div class="slide desktopOnly">
+                <h1>Section 1.2</h1>
+            </div>
+            <div class="slide">
+                <h1>Section 1.2</h1>
+            </div>
+        </div>
+        <div class="section desktopOnly" id="section2" data-disable="down">
+            <h1>Section 2</h1>
+        </div>
+        <div class="section fp-auto-height" id="section3">
+            <h1>Section 3</h1>
+        </div>
+    </div>
+
+</body>
+
+</html>

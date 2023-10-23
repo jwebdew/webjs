@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        body {
+            background-color: #eee;
+        }
+
+        section {
+            width: 460px;
+            margin: 50px auto;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        section figure {
+            width: 100%;
+            height: 300px;
+        }
+
+        section figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        section div {
+            padding: 20px;
+        }
+
+        section div h4 {
+            background-color: rgb(248, 221, 98);
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #333;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        section div h4 span {
+            font-size: 13px;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+
+        #btn {
+            border: 0;
+            width: 90px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 20px;
+            height: 40px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <input type="button" id="btn" value="다크모드" />/ -->
+    <p id="btn">다크모드</p>
+    <section>
+        <figure>
+            <img src="images/피크닉.jpg" alt="" />
+        </figure>
+        <div>
+            <p>[제주인싸] 김녕 소도리 마을여행</p>
+            <strong>18,700원</strong>
+            <h4>이벤트할인<span id="time"></span>남았어요.</h4>
+        </div>
+    </section>
+    <script>
+
+
+
+
+        //1.변수 정하기
+        let time = document.getElementById('time');
+        function eventDay() {
+            let eDate = new Date();
+            let eNewDate = new Date('2022-12-20 15:50:00');
+            let eToDay = eNewDate - eDate;
+
+
+            console.log(eToDay); //밀리초단위로 나옴. 
+
+            ////Math.floor()함수는 주어진 숫자와 같거나 작은 정수 중에서 가장 큰 수를 반환합
+            let eDay = Math.floor(eToDay / (1000 * 60 * 60 * 24)) + 1; //일
+            let eHour = String(Math.floor((eToDay % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, 0); //시간
+            let eMin = Math.floor((eToDay % (1000 * 60 * 60)) / (1000 * 60));//분
+            let eSec = String(Math.floor((eToDay % (1000 * 60)) / 1000)).padStart(2, 0); //초
+
+            console.log(eNewDate);
+            console.log(1000 * 60 * 60 * 24) //86400000
+            console.log(eToDay / (1000 * 60 * 60 * 24)) //220.3713117592593
+            console.log(Math.floor(eToDay / (1000 * 60 * 60)) % 24) //8
+
+
+            time.innerHTML = eDay + '일' + '&nbsp;' + eHour + '시간' + eMin + '분' + eSec + '초';
+        }
+        //함수 실행하기
+        eventDay();
+        setInterval(eventDay, 1000);
+
+        let dayBtn = document.getElementById('btn');
+        let bodyBg = document.getElementsByTagName('body')[0];
+        //let bodyText = document.getElementsByTagName('p')[0];
+        // let typeBtn = document.getElementsByTagName('input')[0];
+
+        dayBtn.innerText = '다크모드';
+
+        dayBtn.onclick = function () {
+            if (dayBtn.innerText == '다크모드') {
+                bodyBg.style.backgroundColor = '#000';
+                // bodyText.style.color = '#333';
+                dayBtn.innerText = '기본모드';
+                dayBtn.style.backgroundColor = '#fff';
+                dayBtn.style.color = '#333';
+                // dayBtn.innerText = '기본모드';
+
+            } else {
+                bodyBg.style.backgroundColor = '#eee';
+                //bodyText.style.color = '#333';
+                dayBtn.innerText = '다크모드';
+                // dayBtn.innerText = '다크모드';
+                dayBtn.style.backgroundColor = '#000';
+                dayBtn.style.color = '#fff';
+            }
+        }
+    </script>
+</body>
+
+</html>

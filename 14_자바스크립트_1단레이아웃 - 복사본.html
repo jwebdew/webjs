@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1단 레이아웃</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+    <link href="css/자바스크립트_1단레이아웃.css" rel="stylesheet" />
+
+    <script>
+        window.onload = function () {
+            //1. 검색아이콘을 클릭했을 때
+            //검색창 나타나고 없어지기
+            let search = document.getElementById('search');
+            let searchBox = document.getElementById('search_box');
+            let searchBoxStyle = searchBox.style.display = 'none';
+
+
+            search.onclick = function () {
+                if (searchBox.style.display == 'none') {
+                    searchBox.style.display = 'block';
+                } else {
+                    searchBox.style.display = 'none';
+                }
+                /* 조건이 부합되지 않을 때 
+                    searchBox의 스타일은 display가 none이다.
+                */
+
+            }//search.onclick 
+
+
+            //2. 전체메뉴아이콘을 클릭했을 때
+            //메뉴 나타나고 사라지기(부드럽게 transition)
+            /* 
+            let menuBtn = 클래스명 all_menu
+            let allMenu = 클래스명all_menu 안에 있는 ul
+            let allMenuStyle = allMenu의 스타일은 opacity가 0이다.
+            */
+            let menuBtn = document.getElementsByClassName('all_menu')[0];
+            let allMenu = menuBtn.getElementsByTagName('ul')[0];
+
+            let allMenuStyle = allMenu.style.opacity = 0;
+
+
+            menuBtn.onclick = function () {
+                if (allMenu.style.opacity == '0') {
+                    allMenu.style.opacity = '1';
+                    allMenu.style.transition = '0.8s';
+                    allMenu.style.right = '0';
+                    allMenu.style.zIndex = '9';
+                } else {
+                    allMenu.style.opacity = '0';
+                    allMenu.style.right = '50px';
+                }
+            }//menuBtn.onclick
+            /* 1. menuBtn을 클릭했을 때 실행
+            2. if (allMenu의 스타일이 opacity가 0과 같을 때) 
+               allMenu의 스타일이 opaicity 1이다
+               allMenu의 스타일이 transition이 0.8초이다.
+               allMenu의 스타일이 right값이 0이다.
+               
+            3. 조건이 부합되지 않을 때
+                allMenu의 스타일이 opaicity 0이다
+                allMenu의 스타일이 transition이 0.8초이다.
+               allMenu의 스타일이 right값이 50px이다. */
+
+            //3. cont01안에 작은 이미지를 마우스 올렸을 때
+            //좌측에 있는 큰 이미지가 해당 이미지로 교체
+            //변수 => 큰 이미지(img), 작은 이미지(img)
+
+            let big = document.getElementsByClassName('big_img')[0];
+            let bigImg = big.getElementsByTagName('img')[0];
+
+            //small = 클래스명 small_img
+            //smallImg = 클래스명 small_img안에 있는 모든img태그
+            let small = document.getElementsByClassName('small_img')[0];
+            let smallImg = small.getElementsByTagName('img');
+
+            //반복문 for
+            //for(초기값; 조건식; 증감값) {실행코드}
+            for (let i = 0; i < smallImg.length; i++) {
+                smallImg[i].onmouseenter = function () {
+                    bigImg.src = this.src;
+                }
+
+                //작은이미지태그[i]에게 마우스 올렸을 때 실행
+                //큰이미지의 src경로와 내가 마우스올린
+                //src경로로 적용.
+                //마우스올렸을 때 => onmouseenter 
+            }
+
+            //4. 팝업창 띄우기
+            //팝업창 버튼을 클릭했을 때 
+            //notice_window가 보여짐
+            //닫기를 클릭했을 때 notice_window가 사라짐
+
+            let noticeBtn = document.getElementById('notice');
+            let popupWindow = document.getElementsByClassName('notice_window')[0];
+            let closeBtn = document.getElementById('btn');
+            let noticeStyle = popupWindow.style.display = 'none';
+
+            noticeBtn.onclick = function () {
+                if (popupWindow.style.display == 'none') {
+                    popupWindow.style.display = 'block';
+
+                }
+            }
+            closeBtn.onclick = function () {
+                if (popupWindow.style.display == 'block') {
+                    popupWindow.style.display = 'none';
+                }
+            }
+
+            // noticeBtn을 클릭했을 때 실행
+            // 조건식 popupWindow의 스타일이 display가 none과 같을 때
+            // popupWindow는 display block이다.
+
+            // 닫기를 클릭했을 때 팝업창은 display:none으로 적용
+        }//window.onload
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <h1>
+                <a href="#">웹사이트로고</a>
+            </h1>
+            <nav class="pc">
+                <ul>
+                    <li><a href="#">타이어</a></li>
+                    <li><a href="#">매장정보</a></li>
+                    <li><a href="#">프로모션</a></li>
+                    <li><a href="#">고객지원</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </nav><!-- .pc end -->
+            <div id="search">
+                <i class="xi-search"><span>검색하기</span></i>
+            </div><!-- #search end -->
+            <div class="all_menu">
+                <i class="xi-apps"><span>전체메뉴보기</span></i>
+                <ul>
+                    <li><a href="#">타이어</a></li>
+                    <li><a href="#">매장정보</a></li>
+                    <li><a href="#">프로모션</a></li>
+                    <li><a href="#">고객지원</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </div><!-- .all_menu end -->
+        </div><!-- .header end -->
+        <div id="search_box">
+            <div>
+                <input type="text" placeholder="검색어를 입력해주세요" />
+                <input type="button" value="검색하기" />
+            </div>
+        </div><!-- #search_box end -->
+    </header>
+    <section class="main_visual">
+        <video autoplay muted loop>
+            <source src="img/video.mp4">
+        </video>
+    </section><!-- .main_visual end -->
+
+    <section class="cont01">
+        <figure class="big_img">
+            <img src="img/food1.jpg" alt="음식이미지" />
+        </figure><!-- .big_img end -->
+
+        <div class="small">
+            <div class="title">
+                <h3>간단요리사 브랜드소개</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div><!-- .title end -->
+
+            <div class="small_img">
+                <div>
+                    <img src="img/food1.jpg" alt="음식이미지" />
+                    <dl>
+                        <dt>음식상품이름</dt>
+                        <dd>어떤 재료로 우려야 할지 고민하지 않아도 돼요.</dd>
+                    </dl>
+                </div><!-- 01 -->
+                <div>
+                    <img src="img/food2.jpg" alt="음식이미지" />
+                    <dl>
+                        <dt>음식상품이름</dt>
+                        <dd>어떤 재료로 우려야 할지 고민하지 않아도 돼요.</dd>
+                    </dl>
+                </div><!-- 02 -->
+                <div>
+                    <img src="img/food3.jpg" alt="음식이미지" />
+                    <dl>
+                        <dt>음식상품이름</dt>
+                        <dd>어떤 재료로 우려야 할지 고민하지 않아도 돼요.</dd>
+                    </dl>
+                </div><!-- 03 -->
+
+            </div><!-- .small_img end -->
+
+        </div><!-- .small end -->
+    </section><!-- .cont01 end -->
+
+    <ul class="fixed_btn">
+        <li id="notice">안내창</li>
+    </ul>
+    <div class="notice_window">
+        <img src="img/wedding.jpg" alt="웨딩이미지" />
+        <button id="btn" type="button">닫기</button>
+    </div><!-- .notice_window end -->
+</body>
+
+</html>

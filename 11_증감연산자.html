@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>증감연산자</title>
+</head>
+
+<body>
+    <script>
+        //p.339
+        //증감연산자 : ++(증가), --(감소)
+
+        //n++; (후위) : 기본 결과값을 가져온 후에 1씩 증가
+        //++n; (전위) : 1이 증가후에 결과값을 가져오고 1씩 증가
+        let a = 1;
+        let b = 1;
+        document.write(a++, '<br>', ++b, '<br>');
+
+        let num1 = 10; //전위연산자로 출력
+        let num2 = 20; //후위연산자로 출력
+        let result;
+
+        result = num2++; //num2++ => 20;
+        //document.write(++num1, '<br>', num2++);
+        document.write(num2, '<br>');
+        //num2 => 21
+    </script>
+</body>
+
+</html>

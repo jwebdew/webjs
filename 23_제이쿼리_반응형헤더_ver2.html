@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대광로제비앙</title>
+    <link href="lib/XEIcon-2.2.0/xeicon.css" rel="stylesheet" />
+    <link href="css/23_ver2.css" rel="stylesheet" />
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('.pc_gnb .depth01').mouseenter(function () {
+                $(this).children('.depth02').stop().slideDown();
+            });
+
+            $('.pc_gnb .depth01').mouseleave(function () {
+                $(this).children('.depth02').stop().slideUp();
+            });
+
+
+            $('.open').click(function () {
+                $('.mobile_gnb').css({
+                    'left': '0',
+                    'transition': '1s'
+                });
+            });
+
+            $('.close').click(function () {
+                $('.mobile_gnb').css({
+                    'left': '100%',
+                    'transition': '1s'
+                });
+            });
+
+            $('.mobile .depth01 > a').click(function () {
+                if ($(this).next().css('display') == 'none') {
+                    $('.mobile .depth02').slideUp();
+                    $(this).next().slideDown();
+
+                    $('.mobile .depth01 > a').css('color', '#333');
+                    $(this).css('color', '#7a6955');
+
+                } else {
+                    $(this).next().slideUp();
+                    $(this).css('color', '#333');
+                }
+            });
+
+
+            //about us
+            //탭메뉴, 배경이미지 교체
+            //fadeIn, fadeOut(opacity효과)
+            $('.tab_menu li').click(function () {
+                $('.tab_menu li').removeClass('on');
+                $(this).addClass('on');
+
+                $('.cont_tab').removeClass('on');
+                $('.cont_tab').eq($(this).index()).addClass('on');
+
+                $('.bg > div').fadeOut(700);
+                $('.bg > div').eq($(this).index()).fadeIn(700);
+            });
+
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <h1>
+                <a href="#">
+                    <img src="img/logo-on.png" alt="대광로제비앙" />
+                </a>
+            </h1>
+            <nav class="pc pc_gnb">
+                <ul>
+                    <li class="depth01">
+                        <a href="#">회사소개</a>
+                        <ul class="depth02">
+                            <li><a href="#">CEO인사말</a></li>
+                            <li><a href="#">회사연혁</a></li>
+                            <li><a href="#">VISION</a></li>
+                            <li><a href="#">오시는길</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">사업영역</a>
+                        <ul class="depth02">
+                            <li><a href="#">주택사업</a></li>
+                            <li><a href="#">건축 토목사업</a></li>
+                            <li><a href="#">조경 기타사업</a></li>
+                            <li><a href="#">호텔사업</a></li>
+                            <li><a href="#">금융사업</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">분양단지</a>
+                        <ul class="depth02">
+                            <li><a href="#">분양단지</a></li>
+                            <li><a href="#">분양예정단지</a></li>
+                            <li><a href="#">주택청약안내</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">공사 입주단지</a>
+                        <ul class="depth02">
+                            <li><a href="#">공사단지</a></li>
+                            <li><a href="#">입주단지</a></li>
+                            <li><a href="#">입주가이드</a></li>
+                            <li><a href="#">입주예약</a></li>
+                            <li><a href="#">입주예약조회</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">BRAND</a>
+                        <ul class="depth02">
+                            <li><a href="#">새소식</a></li>
+                            <li><a href="#">CI/BI</a></li>
+                            <li><a href="#">수상실적</a></li>
+                            <li><a href="#">광고센터</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">고객센터</a>
+                        <ul class="depth02">
+                            <li><a href="#">고객센터안내</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">자주하는질문</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+                </ul><!-- gnb end -->
+
+
+            </nav> <!-- pc pc_gnb end -->
+            <ul class="pc user_gnb">
+                <li><a href="#">검색</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">LOGIN</a></li>
+            </ul>
+
+            <i class="mobile open"><span>메뉴보기</span></i>
+            <nav class="mobile mobile_gnb">
+
+                <ul class="user_gnb">
+                    <li><a href="#">검색</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    <li><i class="mobile close"><span>메뉴닫기</span></i></li>
+                    <li><a href="#">로그인</a></li>
+                </ul>
+                <ul class="gnb">
+                    <li class="depth01">
+                        <a href="#">회사소개</a>
+                        <ul class="depth02">
+                            <li><a href="#">CEO인사말</a></li>
+                            <li><a href="#">회사연혁</a></li>
+                            <li><a href="#">VISION</a></li>
+                            <li><a href="#">오시는길</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">사업영역</a>
+                        <ul class="depth02">
+                            <li><a href="#">주택사업</a></li>
+                            <li><a href="#">건축 토목사업</a></li>
+                            <li><a href="#">조경 기타사업</a></li>
+                            <li><a href="#">호텔사업</a></li>
+                            <li><a href="#">금융사업</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">분양단지</a>
+                        <ul class="depth02">
+                            <li><a href="#">분양단지</a></li>
+                            <li><a href="#">분양예정단지</a></li>
+                            <li><a href="#">주택청약안내</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">공사 입주단지</a>
+                        <ul class="depth02">
+                            <li><a href="#">공사단지</a></li>
+                            <li><a href="#">입주단지</a></li>
+                            <li><a href="#">입주가이드</a></li>
+                            <li><a href="#">입주예약</a></li>
+                            <li><a href="#">입주예약조회</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">BRAND</a>
+                        <ul class="depth02">
+                            <li><a href="#">새소식</a></li>
+                            <li><a href="#">CI/BI</a></li>
+                            <li><a href="#">수상실적</a></li>
+                            <li><a href="#">광고센터</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+
+                    <li class="depth01">
+                        <a href="#">고객센터</a>
+                        <ul class="depth02">
+                            <li><a href="#">고객센터안내</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">자주하는질문</a></li>
+                        </ul><!-- .depth02 end -->
+                    </li><!-- .depth01 -->
+                </ul><!-- gnb end -->
+
+
+            </nav> <!-- pc pc_gnb end -->
+
+        </div><!-- .inner end -->
+    </header>
+
+    <section class="main_visual">
+        <img class="pc" src="img/3024499621_OqTbcDfM_vis1.jpg" alt="당신을 더, 더 행복하게" />
+        <img class="mobile" src="img/3024499621_3cjyRzwS_m-vis1.jpg" alt="당신을 더, 더 행복하게" />
+    </section><!-- .main_visual end -->
+    <div class="quick_menu">
+        <ul class="inner">
+            <li><a href="#">QUICK MENU</a></li>
+            <li><a href="#">입주예약</a></li>
+            <li><a href="#">입주가이드</a></li>
+            <li><a href="#">고객센터</a></li>
+        </ul>
+    </div><!-- quick_menu end -->
+
+    <section class="about">
+        <div class="inner">
+            <h3>ABOUT US</h3>
+            <ul class="tab_menu">
+                <li class="on">대광건영</li>
+                <li>대광로제비앙</li>
+            </ul><!-- .tab_menu end -->
+
+            <div class="tabs">
+                <div class="cont_tab on">
+                    <p>대광은 고객 중심 주택문화를<br />실현하기 위해 노력합니다.</p>
+                    <a href="#">기업 소개 바로가기</a>
+                </div>
+                <div class="cont_tab">
+                    <p>고품격 주거 문화를 리드하는<br />대광로제비앙 입니다.</p>
+                    <a href="#">브랜드 소개 바로가기</a>
+                </div>
+            </div><!-- .tabs end -->
+        </div><!-- .inner end -->
+
+        <div class="bg">
+            <div class="bg1"><span>대광건영 이미지</span></div>
+            <div class="bg2"><span>대광로제비앙 이미지</span></div>
+        </div><!-- .bg end -->
+    </section><!-- .about end -->
+</body>
+
+</html>

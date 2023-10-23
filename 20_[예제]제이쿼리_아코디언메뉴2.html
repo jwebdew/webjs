@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아코디언메뉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            line-height: 1;
+            color: #333;
+        }
+
+        header {
+            height: 100vh;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            font-size: 22px;
+            padding: 40px;
+        }
+
+        .mobile>ul .depth01>a {
+            font-weight: bold;
+            display: block;
+            border-bottom: 1px dashed #fff;
+            padding: 20px;
+        }
+
+        .mobile .depth02 {
+            display: none;
+        }
+
+        .mobile .depth02>li {
+            padding: 15px 20px;
+            background-color: #ffcc00;
+            color: #333;
+            margin: 5px 0;
+            font-size: 18px;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('.depth01 > a').click(function () {
+                if ($(this).next().css('display') == 'none') {
+                    $('.depth02').slideUp();
+                    $(this).next().slideDown();
+                } else {
+                    $(this).next().slideUp();
+                }
+            });
+        });// jquery end
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="mobile">
+            <ul>
+                <li class="depth01">
+                    <a href="#">menu1</a>
+                    <ul class="depth02">
+                        <li><a href="#">menu1-1</a></li>
+                        <li><a href="#">menu1-2</a></li>
+                        <li><a href="#">menu1-3</a></li>
+                        <li><a href="#">menu1-4</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+                <li class="depth01">
+                    <a href="#">menu2</a>
+                    <ul class="depth02">
+                        <li><a href="#">menu2-1</a></li>
+                        <li><a href="#">menu2-2</a></li>
+                        <li><a href="#">menu2-3</a></li>
+                        <li><a href="#">menu2-4</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+                <li class="depth01">
+                    <a href="#">menu3</a>
+                    <ul class="depth02">
+                        <li><a href="#">menu3-1</a></li>
+                        <li><a href="#">menu3-2</a></li>
+                        <li><a href="#">menu3-3</a></li>
+                        <li><a href="#">menu3-4</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+                <li class="depth01">
+                    <a href="#">menu4</a>
+                    <ul class="depth02">
+                        <li><a href="#">menu4-1</a></li>
+                        <li><a href="#">menu4-2</a></li>
+                        <li><a href="#">menu4-3</a></li>
+                        <li><a href="#">menu4-4</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+            </ul>
+        </nav><!-- .mibile end -->
+    </header>
+</body>
+
+</html>

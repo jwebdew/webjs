@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드 스와이퍼</title>
+
+    <!-- swiper css -->
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <!-- xeicon css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.css">
+
+    <link href="css/슬라이드_스와이퍼.css" rel="stylesheet" />
+    <!-- 외부 css파일 작성하여 
+    style태그안에 있는 스타일 추가 -->
+
+    <!-- jquery js -->
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <!-- swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- 스크립트 작성 실행문 -->
+    <script>
+        $(function () {
+            var swiper = new Swiper(".mySwiper", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+            //.cont01 swiper slider
+            var swiper = new Swiper(".cont02_s", {
+                slidesPerView: 3.5,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        });//jqeury end
+    </script>
+</head>
+
+<body>
+    <section class="main_visual">
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/food1.jpg" alt="" />
+                </div><!-- 1 -->
+                <div class="swiper-slide">
+                    <img src="img/food2.jpg" alt="" />
+                </div><!-- 2 -->
+                <div class="swiper-slide">
+                    <img src="img/food3.jpg" alt="" />
+                </div><!-- 3 -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section><!-- .main_visual -->
+
+    <section class="cont01">
+        <div class="title">
+            <h3>Best Seller</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
+            <a href="#">페이지 바로가기</a>
+        </div><!-- .title end -->
+        <div class="cont02_slider">
+            <!-- swiper -->
+            <!-- Swiper -->
+            <div class="swiper cont02_s">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                    <div class="swiper-slide">Slide 6</div>
+                    <div class="swiper-slide">Slide 7</div>
+                    <div class="swiper-slide">Slide 8</div>
+                    <div class="swiper-slide">Slide 9</div>
+                </div>
+                <div class="btn">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div><!-- btn end -->
+            </div>
+
+
+        </div><!-- .cont02_slider end -->
+    </section><!-- .cont01 end -->
+</body>
+
+</html>

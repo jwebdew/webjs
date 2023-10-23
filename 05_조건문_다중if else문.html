@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // if(조건식) {
+        //     if(조건식) {
+        //         스크립트 코드;
+        //     } else {
+        //         스크립트 코드;
+        //     }
+        // } else {
+        //     if(조건식) {
+        //         스크립트 코드;
+        //     } else {
+        //         스크립트 코드;
+        //     }
+        // }
+
+        let gender = prompt('당신의 성별은 무엇입니까?', '');
+        let age = prompt('당신의 나이는 어떻게 됩니까?', '');
+
+        if(gender == '남자') {
+            if(age >= 19) {
+                document.write('남자 성인 입니다.');
+            } else {
+                document.write('남자 미성년자 입니다.');
+            }
+        } else if(gender == '여자') {
+            if(age >= 19) {
+                document.write('여자 성인입니다.');
+            } else {
+                document.write('여자 미성년자 입니다.');
+            }
+            //변수명 age가 19보다 크거가 같을 때
+            //화면에 여자 성인입니다.
+            //그렇지 않을 때
+            //화면에 여자 미성년자 입니다.
+        } else {
+            alert('잘못된 정보입니다.');
+        }
+    </script>
+</body>
+</html>
